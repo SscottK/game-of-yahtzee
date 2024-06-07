@@ -9,6 +9,8 @@ As a user, I should only be able to roll 3 times
 As a user, I want to only be allowed to score points based on dice that are present in the current roll
 As a user, if no score is possible I want to be able to place an X in that space so that it is not counted for the total score
 
+Main approah
+    I am going to manipulate the DOM so that upon interaction the elements are updated
 
 Pseudocode
 CACHE Dom elements
