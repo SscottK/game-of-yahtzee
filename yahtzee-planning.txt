@@ -1,0 +1,80 @@
+
+
+User Stories
+As a user, I want to see a landing page that has a game title and a START button
+As a user, I want to see a score card that has all the possible combos with spaces for my scores as well as a total score
+As a user, I want to see a ROLL DICE button that will “roll” the dice
+As a user, I want to be able to click dice to select them to keep before my next roll
+As a user, I should only be able to roll 3 times
+As a user, I want to only be allowed to score points based on dice that are present in the current roll
+As a user, if no score is possible I want to be able to place an X in that space so that it is not counted for the total score
+
+
+Pseudocode
+CACHE Dom elements
+CONST scoringCombosArray
+Set yahtzeeBonus to 0
+SET upperTotal to 0
+SET lowerTotal to 0
+SET upperScore to 0
+SET lowerScore 0
+SET availableRounds to 0
+SET totalScore to 0
+SET rollCount to 0 
+SET available selectable cells on score board to all
+SET keptDiceArray to empty array
+SET diceSum to 0
+ADD event listener for clicks to each score board cell
+ADD event listener for click on roll button
+
+//ROLLING DICE
+WHEN roll button is clicked
+	IF rollCount is less than or equal to 3
+		ADD event listener for clicks on each dice element
+		FOR each dice element		
+			IF no id of keep dice then 
+				CALL random number function will be called and the results will be set as the textContent of the element and push number to keptDiceArray
+			END IF
+		END FOR	
+		IF player clicks dice
+			ADD id of keep dice to element
+		END IF
+		ADD 1 to rollCount
+	END IF
+
+//KEEPING SCORE
+WHEN score board element clicked	
+	IF element id is a combo (I.e. small straight)
+		FOR each combo in the scoringCombosArray
+			IF keptDIceArray matches combo
+				Add score to lowerScore
+				IF Yahtzee 
+			END IF
+		END FOR
+	ELSE IF element is chance
+		CALL diceSummer function
+		SET results to diceSum
+		SET score bored element textContent to diceSum
+		ADD diceSum to lowerScore
+	ELSE
+		CALL diceSummer function
+		SET diceSum of all the keptDiceArray values that match score board element id
+		SET score board element textContent to diceSum
+		add diceSum to upperTotal 	
+	END IF
+	IF lowerScore is greater than 
+	IF no keptDiceArray value matches selected score board id
+		SET text content of score board cell to 0
+	END IF
+	IF upperScore is greater than or equal to 63
+			upperTotal equals upperScore + 35
+	END IF
+	
+//ENDING GAME
+When a score board element is clicked
+	IF availableRounds is less than or equal to 13
+		availableRounds++
+	END IF
+	IF availableRounds is greater than 13
+		totalScore equals upperTotal + lowerTotal
+	END IF
