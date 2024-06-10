@@ -1,0 +1,107 @@
+body {
+    background-color: darkcyan;
+}
+
+#main {
+    
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid white;
+}
+
+#score-card {
+    background-color: blueviolet;
+    width: 30%;   
+    display: flex;
+    justify-content: space-evenly;
+    border: 1px solid red;
+    flex-direction: column;
+}
+
+#rules {
+    width: 45%;
+    background-color: blueviolet;    
+    display: flex;
+    justify-content: center;
+    flex-direction: column;    
+    border: 1px solid red;
+}
+
+#dice, .upper-section {
+    padding: 25px;
+    display: flex;
+    justify-content: space-around;
+    border: 1px solid blue;
+}
+
+#aces-score {
+    width: 20%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    border: 1px solid blue;    
+}
+
+#twos-score {
+    width: 20%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    border: 1px solid blue;    
+}
+
+#threes-score {
+    width: 20%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    border: 1px solid blue;    
+}
+
+#fours-score {
+    width: 20%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    border: 1px solid blue;    
+}
+
+#fives-score {
+    width: 20%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    border: 1px solid blue;    
+}
+
+#sixes-score {
+    width: 20%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    border: 1px solid blue;    
+}
+
+#upper-score {
+    width: 20%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    border: 1px solid blue;    
+}
+
+#bonus {
+    width: 20%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    border: 1px solid blue;    
+}
+
+#upper-total {
+    width: 20%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    border: 1px solid blue;    
+}
