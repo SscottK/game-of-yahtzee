@@ -22,12 +22,12 @@ body {
     width: 45%;
     background-color: blueviolet;    
     display: flex;
-    justify-content: center;
-    flex-direction: column;    
+    justify-content: flex-start;
+    flex-direction: column;       
     border: 1px solid red;
 }
 
-#dice, .upper-section {
+#dice, .upper-section, .lower-section {
     padding: 25px;
     display: flex;
     justify-content: space-between;
@@ -98,10 +98,11 @@ body {
     border: 1px solid blue;    
 }
 
-#upper-total {
-    width: 20%;
+#upper-total, #lower-total, #totals {
+    width: 20%;    
     background-color: white;
     display: flex;
     justify-content: center;
     border: 1px solid blue;    
 }
+

@@ -8,10 +8,12 @@
     <title>Yahtzee</title>
 </head>
 <body>
-   <div>Score Card</div>
+   <div></div>
    <div id="main">
     
     <div id="score-card">
+        <h1>Score Card</h1>
+        <div>Upper</div>
         <div class="upper-section" id="dice">Aces<div id="aces-score"></div></div>        
         <div class="upper-section" id="dice">Twos<div id="twos-score"></div></div>
         <div class="upper-section" id="dice">Threes<div id="threes-score"></div></div>  
@@ -19,12 +21,39 @@
         <div class="upper-section" id="dice">Fives<div id="fives-score"></div></div>
         <div class="upper-section" id="dice">Sixes<div id="sixes-score"></div></div>
         <div class="upper-section" id="upper-scores">Upper Score<div id="upper-score">80</div></div>
-        <div class="upper-section" id="upper-bonus">Bonus if upper score > 65 <div id="bonus">35</div></div>
-        <div class="upper-section" id="upper-totals">Upper Total<div id="upper-total">80</div></div>            
+        <div class="upper-section" id="upper-bonus">+35 if upper score >= 63 <div id="bonus">35</div></div>
+        <div class="upper-section" id="upper-totals">Upper Total<div id="upper-total">80</div></div>
+        <div>Lower</div>
+        <div class="lower-section" id="dice">3 of a kind<div id="aces-score"></div></div>        
+        <div class="lower-section" id="dice">4 of a kind<div id="twos-score"></div></div>
+        <div class="lower-section" id="dice">Full House<div id="twos-score"></div></div>
+        <div class="lower-section" id="dice">Small Straight<div id="threes-score"></div></div>  
+        <div class="lower-section" id="dice">Large Straight<div id="fours-score"></div></div>        
+        <div class="lower-section" id="dice">Yahtzee<div id="yahtzee"><input type="checkbox" name="yahtzee-check" id="yahtzee-check"></div></div>
+        <div class="lower-section" id="dice">Yahtzee Bonus<div id="yahtzee-bonus"><input type="checkbox" name="yahtzee-bonus" id="yahtzee-bonus-one"><input type="checkbox" name="yahtzee-bonus" id="yahtzee-bonus-two"><input type="checkbox" name="yahtzee-bonus" id="yahtzee-bonus-three"></div></div>         
+        <div class="lower-section" id="dice">Chance<div id="chance"><input type="checkbox" name="chance-selector" id="chance-selector"></div></div>
+        <div class="lower-section" id="lower-totals">Lower Total<div id="lower-total"></div></div>
+        <div class="lower-section" id="upper-totals">Upper Total<div id="upper-total"></div></div>
+        <div class="lower-section" id="total">Total Score<div id="totals"></div></div>
+                    
     </div>    
     <div id="rules">
         <h2>The Rules</h2>
         <p><h3>Click on New Game to start playing!</h3></p>
+        <p><h4>Basic Rules:</h4>Each round a player gets 3 chances to roll the dice. At any point during your turn you may choose to score your dice. See <b>"Ways to Score"</b> below to see how points are scored. If you can not score with the dice after 3 rolls you will have to choose one of the ways to score and "scratch" it. Once all boxes are filled, either with points or scratches, your game is over and you can not score anymore points. When the game is over the player with the highest score wins.
+        </p>
+        <p><h4>How to use this app:</h4><ul>
+            <li>Click the "New Game" button to start a game.</li>
+            <li>Click the "Roll Dice" button to roll the dice.</li>
+            <li>After each roll click on a dice to keep that roll.</li>
+            <li>When you are ready to score just select the empty box that matches what you wish to score. !!!If you do not have dice available that count for that way to score you will scratch that box out and will not be able to score there the rest of the game. Do not click on the score boxes until you are ready to score!!!</li>
+            <li>You can add up to 3 check marks for the Yahtzee Bonus with each check mark adding 100 points. You can not scratch out a Yahtzee Bonus spot they are only spots to be counted. If you scratch out the Yahtzee all Yahtzee Bonus spots will automatically be scratched and you can not score a Yahtzee for the rest of the game</li>
+        </ul>
+        </p>
+        <ul><h4>Ways to Score</h4>
+            <li></li>
+            <li></li>
+        </ul>
 
     </div> 
    </div>
