@@ -80,3 +80,11 @@ When a score board element is clicked
 	IF availableRounds is greater than 13
 		totalScore equals upperTotal + lowerTotal
 	END IF
+
+
+
+Things to do:
+Write logic
+write logic for multiple players
+create dice graphics
+create background img if times
