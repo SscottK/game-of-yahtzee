@@ -145,7 +145,7 @@ const diceTotal = (event) => {
         })
         event.target.textContent = diceSum
     }
-
+    
 
 }
 
