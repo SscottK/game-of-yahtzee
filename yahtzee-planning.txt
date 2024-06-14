@@ -85,6 +85,12 @@ When a score board element is clicked
 
 Things to do:
 Write logic
+	finish scoring functions
 write logic for multiple players
+	see if you can just use an 2 arrays
+	creat win loss message
+remove all unwanted borders and console logs
 create dice graphics
 create background img if times
+write readme.md
+

@@ -22,6 +22,7 @@ let diceSum = 0;
 let turnOver = false;
 let initalNum = 1;
 let roundsRemaining = 13
+let justScored = false
 
 /*--let cached elements  -----*/
 
@@ -37,7 +38,7 @@ const diceImgTwo = document.querySelector("#dice-second");
 const diceImgThree = document.querySelector("#dice-third");
 const diceImgFour = document.querySelector("#dice-fourth");
 const diceImgFive = document.querySelector("#dice-fifth");
-// const checkBoxEls = document.querySelectorAll('')
+const checkBoxEls = document.querySelectorAll('kept-dice')
 
 /*----- functions -----*/
 const init = () => {
@@ -53,6 +54,7 @@ const init = () => {
   keptDice = [];
   diceSum = 0;
   initalNum = 1;
+  justScored = false
   rollDiceButton.disabled = false;
   endTurnButton.disabled = true;
   turnOver = false;
@@ -60,13 +62,23 @@ const init = () => {
     el.textContent = initalNum;
     initalNum += 1;
     el.classList.remove("keeping");
+    if (el.style.backgroundColor === 'red') 
+        el.style.backgroundColor = 'darkcyan'
   });
+  scoreBoxEls.forEach((el) => {
+    el.textContent = ''
+  })
 };
 
 const rollDice = () => {
   let index = 0;
+  justScored = false
+  scoreBoxEls.forEach((el) => {
+    el.addEventListener('click', scorePoints)
+  })
   diceImgEls.forEach((el) => {
-    console.log();
+   
+    
     if (!el.className.match("keeping")) {
       let roll = Math.floor(Math.random() * 6 + 1);
       el.textContent = roll;
@@ -94,6 +106,8 @@ const endTurn = () => {
   }
   diceImgEls.forEach((el) => {
     el.classList.remove("keeping");
+    if (el.style.backgroundColor === 'red') 
+        el.style.backgroundColor = 'darkcyan'
   });
 };
 
@@ -113,10 +127,21 @@ const diceToKeep = (event) => {
     event.target === diceImgFive
   ) {
     event.target.classList.add("keeping");
+    
   }
   
+  changeDiceColor()
+
   console.log(event.target)
 };
+
+const changeDiceColor = () => {
+    diceImgEls.forEach((el) => {
+        if (el.className.match('keeping')) {
+        el.style.backgroundColor = 'red'
+        }
+      })
+    }
 
 const fullHouse = () => {
   let sortedDice = keptDice.sort();
@@ -139,7 +164,19 @@ const diceTotal = (event) => {
         keptDice.forEach((dice) => {
             if (dice === 1) {
                 diceSum += dice
+                
             }  else if (!keptDice.includes(1)) {
+                diceSum = 'X'
+            }
+        })
+        event.target.textContent = diceSum
+    }
+    if (event.target.id === 'twos-score' && event.target.textContent === '') {
+        keptDice.forEach((dice) => {
+            if (dice === 2) {
+                diceSum += dice
+                
+            }  else if (!keptDice.includes(2)) {
                 diceSum = 'X'
             }
         })
@@ -150,9 +187,19 @@ const diceTotal = (event) => {
 }
 
 const scorePoints = (event) => {
-    diceTotal(event) 
+  diceTotal(event) 
   fullHouse()
-  turnOver = true;
+  justScored = true
+  if (justScored === true) {
+    scoreBoxEls.forEach((el) => {
+        el.removeEventListener('click', scorePoints)
+        rollDiceButton.disabled = true
+        endTurnButton.disabled = false
+    })
+
+  }
+  
+//   turnOver = true;
 };
 
 
@@ -168,13 +215,15 @@ newGameButton.addEventListener("click", init);
 
 scoreBoxEls.forEach((el) => {
   if (el !== upperBonus) {
-    el.addEventListener("click", scorePoints);  }
-
+    el.addEventListener("click", scorePoints);
+  }
 });
 
 rollDiceButton.addEventListener("click", rollDice);
 
 endTurnButton.addEventListener("click", endTurn);
+
+fullHouseEl.addEventListener('click', scorePoints)
 
 diceImgOne.addEventListener("click", diceToKeep);
 diceImgTwo.addEventListener("click", diceToKeep);

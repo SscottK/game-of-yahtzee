@@ -84,3 +84,7 @@ body {
     display: flex;
     justify-content: space-around;
 }
+
+.shown-dice {
+    background-color: darkcyan;
+}
