@@ -38,7 +38,7 @@ body {
     border: 1px solid blue;
 }
 
-#aces-score {
+.score-box{
     width: 20%;
     background-color: black;
     display: flex;
@@ -46,61 +46,6 @@ body {
     border: 1px solid blue;    
 }
 
-#twos-score {
-    width: 20%;
-    background-color: black;
-    display: flex;
-    justify-content: center;
-    border: 1px solid blue;    
-}
-
-#threes-score {
-    width: 20%;
-    background-color: black;
-    display: flex;
-    justify-content: center;
-    border: 1px solid blue;    
-}
-
-#fours-score {
-    width: 20%;
-    background-color: black;
-    display: flex;
-    justify-content: center;
-    border: 1px solid blue;    
-}
-
-#fives-score {
-    width: 20%;
-    background-color: black;
-    display: flex;
-    justify-content: center;
-    border: 1px solid blue;    
-}
-
-#sixes-score {
-    width: 20%;
-    background-color: black;
-    display: flex;
-    justify-content: center;
-    border: 1px solid blue;    
-}
-
-#upper-score {
-    width: 20%;
-    background-color: black;
-    display: flex;
-    justify-content: center;
-    border: 1px solid blue;    
-}
-
-#bonus {
-    width: 20%;
-    background-color: black;
-    display: flex;
-    justify-content: center;
-    border: 1px solid blue;    
-}
 
 #upper-total, #lower-total, #totals {
     width: 20%;    
@@ -114,3 +59,28 @@ body {
     text-align: left;
 }
 
+#game-settings {
+    text-align: center;
+}
+
+#dice-imgs {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: ; */
+    border: 1px solid black;
+}
+
+#dice-first, #dice-second, #dice-third, #dice-fourth, #dice-fifth {
+    display: flex;
+    justify-content: center;
+    margin: 25px auto;
+    width: 50px;
+    height: 50px;;
+    border: 1px solid black;
+}
+
+#bottom-buttons {
+    display: flex;
+    justify-content: space-around;
+}

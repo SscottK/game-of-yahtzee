@@ -8,81 +8,97 @@
     <title>Yahtzee</title>
 </head>
 <body>
-   
-   <div id="main">
-    
-    <div id="score-card">
-        <h1>Score Card</h1>
-        <div>Upper</div>
-        <div class="upper-section" id="dice">Aces = 1<div id="aces-score"></div></div>        
-        <div class="upper-section" id="dice">Twos = 2<div id="twos-score"></div></div>
-        <div class="upper-section" id="dice">Threes = 3<div id="threes-score"></div></div>  
-        <div class="upper-section" id="dice">Fours = 4<div id="fours-score"></div></div>        
-        <div class="upper-section" id="dice">Fives = 5<div id="fives-score"></div></div>
-        <div class="upper-section" id="dice">Sixes = 6<div id="sixes-score"></div></div>
-        <div class="upper-section" id="upper-scores">Upper Score<div id="upper-score"></div></div>
-        <div class="upper-section" id="upper-bonus">Upper Bonus<div id="bonus"></div></div>
-        <div class="upper-section" id="upper-totals">Upper Total<div id="upper-total"></div></div>
-        <div>Lower</div>
-        <div class="lower-section" id="dice">3 of a kind<div id="aces-score"></div></div>        
-        <div class="lower-section" id="dice">4 of a kind<div id="twos-score"></div></div>
-        <div class="lower-section" id="dice">Full House<div id="twos-score"></div></div>
-        <div class="lower-section" id="dice">Small Straight<div id="threes-score"></div></div>  
-        <div class="lower-section" id="dice">Large Straight<div id="fours-score"></div></div>        
-        <div class="lower-section" id="dice">Yahtzee<div id="yahtzee"><input type="checkbox" name="yahtzee-check" id="yahtzee-check"></div></div>
-        <div class="lower-section" id="dice">Yahtzee Bonus<div id="yahtzee-bonus"><input type="checkbox" name="yahtzee-bonus" id="yahtzee-bonus-one"><input type="checkbox" name="yahtzee-bonus" id="yahtzee-bonus-two"><input type="checkbox" name="yahtzee-bonus" id="yahtzee-bonus-three"></div></div>         
-        <div class="lower-section" id="dice">Chance<div id="chance"><input type="checkbox" name="chance-selector" id="chance-selector"></div></div>
-        <div class="lower-section" id="lower-totals">Lower Total<div id="lower-total"></div></div>
-        <div class="lower-section" id="upper-totals">Upper Total<div id="upper-total"></div></div>
-        <div class="lower-section" id="total">Total Score<div id="totals"></div></div>
-                    
-    </div>    
-    <div id="rules">
-        <h2>The Rules</h2>
-        <p><h3>Click on New Game to start playing!</h3></p>
-        <div id="basics">
-            <p><h4>Basic Rules:</h4>
+    <div id="game-settings">
+        <p id="screen-title"><h1>YAHTZEE</h1></p>
+        Players 1<input type="checkbox" name="player1" id="player1" required checked>
+        2<input type="checkbox" name="player2" id="player2">
+        3<input type="checkbox" name="player3" id="player3">
+        4<input type="checkbox" name="player4" id="player4">
+        <button type="button" id="new-game">New Game</button>
+    </div>
+   <div>
+    <div id="main">
+        <div id="score-card">
+            <h1>Score Card</h1>
+            <div>Upper</div>
+            <div class="upper-section" id="dice">Aces = 1<div class="score-box" id="aces-score"></div></div>        
+            <div class="upper-section" id="dice">Twos = 2<div class="score-box" id="twos-score"></div></div>
+            <div class="upper-section" id="dice">Threes = 3<div class="score-box" id="threes-score"></div></div>  
+            <div class="upper-section" id="dice">Fours = 4<div class="score-box" id="fours-score"></div></div>        
+            <div class="upper-section" id="dice">Fives = 5<div class="score-box" id="fives-score"></div></div>
+            <div class="upper-section" id="dice">Sixes = 6<div class="score-box" id="sixes-score"></div></div>
+            <div class="upper-section" id="upper-scores">Upper Score<div class="score-box" id="upper-score"></div></div>
+            <div class="upper-section" id="upper-bonus">Upper Bonus<div class="score-box" id="bonus"></div></div>
+            <div class="upper-section" id="upper-totals">Upper Total<div class="score-box" id="upper-total"></div></div>
+            <div>Lower</div>
+            <div class="lower-section" id="dice">3 of a kind<div class="score-box multiples" id="three-kind-score"></div></div>        
+            <div class="lower-section" id="dice">4 of a kind<div class="score-box multiples" id="four-kind-score"></div></div>
+            <div class="lower-section" id="dice">Full House<div class="score-box" id="full-house"></div></div>
+            <div class="lower-section" id="dice">Small Straight<div class="score-box" id="small-straight"></div></div>  
+            <div class="lower-section" id="dice">Large Straight<div class="score-box" id="large-straight"></div></div>        
+            <div class="lower-section" id="dice">Yahtzee<div id="yahtzee"><input type="checkbox" name="yahtzee-check" id="yahtzee-check"></div></div>
+            <div class="lower-section" id="dice">Yahtzee Bonus<div id="yahtzee-bonus"><input type="checkbox" name="yahtzee-bonus" id="yahtzee-bonus-one"><input type="checkbox" name="yahtzee-bonus" id="yahtzee-bonus-two"><input type="checkbox" name="yahtzee-bonus" id="yahtzee-bonus-three"></div></div>         
+            <div class="lower-section" id="dice">Chance<div id="chance"><input type="checkbox" name="chance-selector" id="chance-selector"></div></div>
+            <div class="lower-section" id="lower-totals">Lower Total<div class="score-box" id="lower-total"></div></div>
+            <div class="lower-section" id="upper-totals">Upper Total<div class="score-box" id="upper-total"></div></div>
+            <div class="lower-section" id="total">Total Score<div class="score-box" id="totals"></div></div>
+        </div>    
+        <div id="dice-imgs">
+           <div class="shown-dice" id="dice-first">1</div>
+           <div class="shown-dice" id="dice-second">2</div>
+           <div class="shown-dice" id="dice-third">3</div>
+           <div class="shown-dice" id="dice-fourth">4</div>
+           <div class="shown-dice" id="dice-fifth">5</div>
+           <div id="bottom-buttons">
+            <button type="button" id="roll-dice">Roll Dice</button><button type="button" id="end-turn">End Turn</button>
+           </div>
+        </div>    
+        <div id="rules">
+            <h2>The Rules</h2>
+            <p><h3>Click on New Game to start playing!</h3></p>
+            <div id="basics">
+                <p><h4>Basic Rules:</h4>
+                    <ul>
+                        <li>Each round a player gets 3 chances to roll the dice. When a player is rolling it is their turn</li>
+                        <li>At any point during a players turn they may choose to score their dice. See <b>"Ways to Score"</b> below to see how points are scored.</li>
+                        <li>If you can not score with the dice after 3 rolls you will have to choose one of the ways to score and "scratch" it.</li>
+                        <li>Once all boxes are filled, either with points or scratches, your game is over and you can not score anymore points.</li>
+                        <li>When the game is over the player with the highest score wins.</li>
+                    </ul>
+                </p>
+            </div>
+            <div id="app-instructions">
+                <p><h4>How to use this app:</h4>
+                    <ul>
+                        <li>Click the "New Game" button to start a game.</li>
+                        <li>Click the "Roll Dice" button to roll the dice.</li>
+                        <li>After each roll click on a dice to keep that roll.</li>
+                        <li>When you are ready to score just select the empty box that matches what you wish to score and yhoure score will automatically be enterd based on the dice. !!!If you do not have dice available that count for that way to score you will scratch that box out and will not be able to  score there the rest of the game. Do not click on the score boxes until you are ready to score!!!</li>
+                        <li>Once you click a box to score you must roll the dice before you can score again.</li>
+                        <li>You can add up to 3 check marks for the Yahtzee Bonus with each check mark adding 100 points. You can not scratch out a Yahtzee Bonus spot they are only spots to be counted. If you scratch out the Yahtzee all Yahtzee Bonus spots will automatically be scratched and you can not score a Yahtzee for the rest of the game.</li>
+                    </ul>
+                </p>
+            </div>
+            <div id="scoring">
+                <p><h4>Ways to Score:</h4></p>
                 <ul>
-                    <li>Each round a player gets 3 chances to roll the dice. When a player is rolling it is their turn</li>
-                    <li>At any point during a players turn they may choose to score their dice. See <b>"Ways to Score"</b> below to see how points are scored.</li>
-                    <li>If you can not score with the dice after 3 rolls you will have to choose one of the ways to score and "scratch" it.</li>
-                    <li>Once all boxes are filled, either with points or scratches, your game is over and you can not score anymore points.</li>
-                    <li>When the game is over the player with the highest score wins.</li>
+                    <li>One way to score is to add together all dice that are matching numbers. For example if you have four 2's you can select the twos score box and you will score 8 points.</li>
+                    <li>Another way to score is to use one of the patterns. There are six different patterns scores.
+                        <ol>
+                            <li>Three and Four of a kind. If you have any 3 or 4 dice with matching numbers the points are the total of all dice added together.</li>
+                            <li>Full House. If you have two matching dice and three matching dice at one time you score 25 points.</li>
+                            <li>Small Straight. If you have four dice that are sequential then you can score 30 points</li>
+                            <li>Large Straight. If you hace five dice that are sequential then you can score 40 points</li>
+                            <li>Chance. The total of all dice added together</li>
+                            <li>Yahtzee. The namesake of the game and the highest points on the board. You must have ALL FIVE DICE matching in number and then you can score a Yahtzee.</li>
+                        </ol>
+                    </li>
+                    <li>Upper Bonus. If your score in the upper section is ever more than or equalt to 63 you get 35 points added to your score</li>
+                    <li>Yahtzee Bonus. If you roll a Yahtzee more than once you can score on the Yahtzee Bonus up to three times.</li>
                 </ul>
-            </p>
-        </div>
-        <div id="app-instructions">
-            <p><h4>How to use this app:</h4>
-                <ul>
-                    <li>Click the "New Game" button to start a game.</li>
-                    <li>Click the "Roll Dice" button to roll the dice.</li>
-                    <li>After each roll click on a dice to keep that roll.</li>
-                    <li>When you are ready to score just select the empty box that matches what you wish to score and yhoure score will automatically be enterd based on the dice. !!!If you do not have dice available that count for that way to score you will scratch that box out and will not be able to  score there the rest of the game. Do not click on the score boxes until you are ready to score!!!</li>
-                    <li>Once you click a box to score you must roll the dice before you can score again.</li>
-                    <li>You can add up to 3 check marks for the Yahtzee Bonus with each check mark adding 100 points. You can not scratch out a Yahtzee Bonus spot they are only spots to be counted. If you scratch out the Yahtzee all Yahtzee Bonus spots will automatically be scratched and you can not score a Yahtzee for the rest of the game.</li>
-                </ul>
-            </p>
-        </div>
-        <div id="scoring">
-            <p><h4>Ways to Score:</h4></p>
-            <ul>
-                <li>One way to score is to add together all dice that are matching numbers. For example if you have four 2's you can select the twos score box and you will score 8 points.</li>
-                <li>Another way to score is to use one of the patterns. There are six different patterns scores.
-                    <ol>
-                        <li>Three and Four of a kind. If you have any 3 or 4 dice with matching numbers the points are the total of all dice added together.</li>
-                        <li>Full House. If you have two matching dice and three matching dice at one time you score 25 points.</li>
-                        <li>Small Straight. If you have four dice that are sequential then you can score 30 points</li>
-                        <li>Large Straight. If you hace five dice that are sequential then you can score 40 points</li>
-                        <li>Chance. The total of all dice added together</li>
-                        <li>Yahtzee. The namesake of the game and the highest points on the board. You must have ALL FIVE DICE matching in number and then you can score a Yahtzee.</li>
-                    </ol>
-                </li>
-                <li>Upper Bonus. If your score in the upper section is ever more than or equalt to 63 you get 35 points added to your score</li>
-                <li>Yahtzee Bonus. If you roll a Yahtzee more than once you can score on the Yahtzee Bonus up to three times.</li>
-            </ul>
-        </div>
-    </div> 
-</div>
-   
+            </div>
+        </div> 
+    </div>
+</div> 
 </body>
 </html>

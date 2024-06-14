@@ -38,11 +38,11 @@ WHEN roll button is clicked
 				CALL random number function will be called and the results will be set as the textContent of the element and push number to keptDiceArray
 			END IF
 		END FOR	
-		IF player clicks dice
-			ADD id of keep dice to element
-		END IF
-		ADD 1 to rollCount
-	END IF
+//KEEPING DICE
+IF player clicks dice
+	ADD id of keep dice to element
+END IF
+ADD 1 to rollCountEND IF
 
 //KEEPING SCORE
 WHEN score board element clicked	
