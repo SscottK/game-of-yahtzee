@@ -1,13 +1,14 @@
 body {
-    margin: 0;
+    margin: 0;    
     background-color: darkcyan;
     color: lightgray;
 }
 
-#main {    
+#main { 
+     
     display: flex;
     justify-content: space-between;
-    border: 1px solid black;
+    
 }
 
 #score-card {
@@ -16,7 +17,7 @@ body {
     width: 30%;   
     display: flex;
     justify-content: space-evenly;
-    border: 1px solid red;
+    border: 1px solid gray;
     flex-direction: column;
 }
 
@@ -27,23 +28,28 @@ body {
     background-color: blueviolet;    
     display: flex;
     justify-content: flex-start;
-    flex-direction: column;       
-    border: 1px solid red;
+    flex-direction: column;
+    border: 1px solid gray;       
+    
 }
 
 #dice, .upper-section, .lower-section {
     padding: 25px;
     display: flex;
     justify-content: space-between;
-    border: 1px solid blue;
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray ;
+    
 }
+
+
 
 .score-box{
     width: 20%;
     background-color: black;
     display: flex;
     justify-content: center;
-    border: 1px solid blue;    
+        
 }
 
 
@@ -52,7 +58,7 @@ body {
     background-color: black;
     display: flex;
     justify-content: center;
-    border: 1px solid blue;    
+       
 }
 
 #basics, #app-instructions, #scoring {
@@ -68,7 +74,7 @@ body {
     display: flex;
     flex-direction: column;
     
-    border: 1px solid black;
+    
 }
 
 #dice-first, #dice-second, #dice-third, #dice-fourth, #dice-fifth {
@@ -80,6 +86,7 @@ body {
     width: 50px;
     height: 50px;;
     border: 1px solid black;
+    border-radius: 20%;
 }
 
 #bottom-buttons {
