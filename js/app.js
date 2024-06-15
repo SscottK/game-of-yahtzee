@@ -11,7 +11,6 @@ const straightsCombos = [
 /*----- state variables -----*/
 let upperTotal = 0;
 let yahtzeeBonus = 0;
-let lowerTotal = 0;
 let upperScore = 0;
 let lowerScore = 0;
 let gameOver = false;
@@ -44,7 +43,6 @@ const checkBoxEls = document.querySelectorAll("kept-dice");
 const init = () => {
   yahtzeeBonus = 0;
   upperTotal = 0;
-  lowerTotal = 0;
   upperScore = 0;
   lowerScore = 0;
   roundsRemaining = 13;
@@ -105,7 +103,16 @@ const endTurn = () => {
     endTurnButton.disabled = true;
     turnOver = false;
   }
-  // removeKeeping(event)
+  diceImgEls.forEach((el) => {
+    el.classList.remove("keeping");
+    el.removeEventListener("click", removeKeeping);
+    console.log(el);
+    changeDiceColor();
+  });
+  roundsRemaining -= 1;
+  if ((roundsRemaining = 0)) {
+    //gamewinner()
+  }
 };
 
 const removeKeeping = (event) => {
@@ -153,6 +160,7 @@ const fullHouse = (event) => {
     sortedDice[0] === sortedDice[2] &&
     sortedDice[3] === sortedDice[4]
   ) {
+    console.log("worked");
     fullHouseEl.textContent = "25";
   } else if (event.target === fullHouseEl) {
     fullHouseEl.textContent = "X";
@@ -236,17 +244,47 @@ const diceTotal = (event) => {
 
 const threeOfAKind = (event) => {
   diceSum = 0;
-  let sortedDice = keptDice.sort();
+  let sortedDices = keptDice.sort();
   keptDice.forEach((dice) => {
     if (
-      event.target.id === "three-kind-score" &&
-      sortedDice[0] === sortedDice[1] &&
-      sortedDice[0] === sortedDice[2]
+      (event.target.id === "three-kind-score" &&
+        sortedDices[0] === sortedDices[1] &&
+        sortedDices[0] === sortedDices[2]) ||
+      (sortedDices[1] === sortedDices[2] &&
+        sortedDices[1] === sortedDices[3]) ||
+      (sortedDices[2] === sortedDices[3] && sortedDices[2] === sortedDices[4])
     ) {
       diceSum += dice;
+
+      event.target.textContent = diceSum;
+    } else if (event.target.id === "three-kind-score") {
+      event.target.textContent = "X";
     }
   });
-  event.target.textContent = diceSum;
+  lowerScore = diceSum;
+};
+
+const fourOfAKind = (event) => {
+  diceSum = 0;
+  let sortedDices = keptDice.sort();
+  keptDice.forEach((dice) => {
+    if (
+      (event.target.id === "four-kind-score" &&
+        sortedDices[0] === sortedDices[1] &&
+        sortedDices[0] === sortedDices[2] &&
+        sortedDices[0] === sortedDices[3]) ||
+      (sortedDices[1] === sortedDices[2] &&
+        sortedDices[1] === sortedDices[3] &&
+        sortedDices[1] === sortedDices[4])
+    ) {
+      diceSum += dice;
+
+      event.target.textContent = diceSum;
+    } else if (event.target.id === "three-kind-score") {
+      event.target.textContent = "X";
+    }
+  });
+  lowerScore = diceSum;
 };
 
 const scorePoints = (event) => {
@@ -264,6 +302,13 @@ const scorePoints = (event) => {
       }
       if (el.id === "upper-total") {
         upperTotal = upperScore + 35;
+      }
+      if (el.id === "lower-total") {
+        el.textContent = lowerScore;
+      }
+      if (el.id === "totals") {
+        totalScore = upperScore + lowerScore;
+        el.textContent = totalScore;
       }
       el.removeEventListener("click", scorePoints);
       rollDiceButton.disabled = true;
