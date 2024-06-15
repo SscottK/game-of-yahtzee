@@ -119,7 +119,7 @@ const endTurn = () => {
   });
   roundsRemaining -= 1;
   if ((roundsRemaining = 0)) {
-    //gamewinner()
+    gamewinner()
   }
 };
 
@@ -329,8 +329,8 @@ const straightsChecker = (event) => {
   
     largeStraights.forEach((combo) => {
       if (event.target.id === "large-straight"  && sorted.toString().includes(combo.toString())) {
-        points += 30
-        event.target.textContent = "40";
+        points += 40
+        event.target.textContent = points;
       } else {
         event.target.textContent = 0;
       }
@@ -383,7 +383,7 @@ const chance = (event) => {
 
 const gamewinner = () => {
   if (totalScore >= 200) {
-    winLossMessageEl.textContent = `Your score ${totalScore} was over 250. You Win! `;
+    winLossMessageEl.textContent = `Your score of ${totalScore} was over 250. You Win! `;
   }
 };
 
@@ -434,4 +434,3 @@ rollDiceButton.addEventListener("click", rollDice);
 
 endTurnButton.addEventListener("click", endTurn);
 
-// fullHouseEl.addEventListener("click", fullHouse);
