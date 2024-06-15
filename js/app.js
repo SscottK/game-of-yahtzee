@@ -21,14 +21,14 @@ let keptDice = [];
 let diceSum = 0;
 let turnOver = false;
 let initalNum = 1;
-let roundsRemaining = 13
-let justScored = false
+let roundsRemaining = 13;
+let justScored = false;
 
 /*--let cached elements  -----*/
 
 const fullHouseEl = document.querySelector("#full-house");
 const scoreBoxEls = document.querySelectorAll(".score-box");
-const upperBonus = document.querySelector("#bonus");
+const upperBonusEl = document.querySelector("#bonus");
 const newGameButton = document.querySelector("#new-game");
 const rollDiceButton = document.querySelector("#roll-dice");
 const endTurnButton = document.querySelector("#end-turn");
@@ -38,7 +38,7 @@ const diceImgTwo = document.querySelector("#dice-second");
 const diceImgThree = document.querySelector("#dice-third");
 const diceImgFour = document.querySelector("#dice-fourth");
 const diceImgFive = document.querySelector("#dice-fifth");
-const checkBoxEls = document.querySelectorAll('kept-dice')
+const checkBoxEls = document.querySelectorAll("kept-dice");
 
 /*----- functions -----*/
 const init = () => {
@@ -47,14 +47,14 @@ const init = () => {
   lowerTotal = 0;
   upperScore = 0;
   lowerScore = 0;
-  roundsRemaining = 13
+  roundsRemaining = 13;
   gameOver = false;
   totalScore = 0;
   rollCount = 3;
   keptDice = [];
   diceSum = 0;
   initalNum = 1;
-  justScored = false
+  justScored = false;
   rollDiceButton.disabled = false;
   endTurnButton.disabled = true;
   turnOver = false;
@@ -62,23 +62,25 @@ const init = () => {
     el.textContent = initalNum;
     initalNum += 1;
     el.classList.remove("keeping");
-    if (el.style.backgroundColor === 'red') 
-        el.style.backgroundColor = 'darkcyan'
+    if (el.style.backgroundColor === "red")
+      el.style.backgroundColor = "darkcyan";
   });
   scoreBoxEls.forEach((el) => {
-    el.textContent = ''
-  })
+    el.textContent = "";
+  });
 };
 
 const rollDice = () => {
   let index = 0;
-  justScored = false
+  justScored = false;
   scoreBoxEls.forEach((el) => {
-    el.addEventListener('click', scorePoints)
-  })
+    el.addEventListener("click", scorePoints);
+  });
   diceImgEls.forEach((el) => {
-   
-    
+    if (!el.className.match("keeping")) {
+      el.addEventListener("click", diceToKeep);
+    }
+
     if (!el.className.match("keeping")) {
       let roll = Math.floor(Math.random() * 6 + 1);
       el.textContent = roll;
@@ -94,7 +96,6 @@ const rollDice = () => {
     endTurnButton.disabled = false;
     turnOver = true;
   }
-  
 };
 
 const endTurn = () => {
@@ -104,21 +105,18 @@ const endTurn = () => {
     endTurnButton.disabled = true;
     turnOver = false;
   }
-  diceImgEls.forEach((el) => {
-    el.classList.remove("keeping");
-    if (el.style.backgroundColor === 'red') 
-        el.style.backgroundColor = 'darkcyan'
-  });
+  // removeKeeping(event)
 };
 
 const removeKeeping = (event) => {
-  if (event.target.classList === "keeping") {
+  if (event.target.className.match("keeping")) {
     event.target.classList.remove("keeping");
+    event.target.removeEventListener("click", removeKeeping);
+    changeDiceColor();
   }
 };
 
 const diceToKeep = (event) => {
-  
   if (
     event.target === diceImgOne ||
     event.target === diceImgTwo ||
@@ -127,82 +125,154 @@ const diceToKeep = (event) => {
     event.target === diceImgFive
   ) {
     event.target.classList.add("keeping");
-    
   }
-  
-  changeDiceColor()
+  event.target.addEventListener("click", removeKeeping);
 
-  console.log(event.target)
+  changeDiceColor();
+
+  console.log(event.target);
 };
 
 const changeDiceColor = () => {
-    diceImgEls.forEach((el) => {
-        if (el.className.match('keeping')) {
-        el.style.backgroundColor = 'red'
-        }
-      })
+  diceImgEls.forEach((el) => {
+    if (el.className.match("keeping")) {
+      el.style.backgroundColor = "red";
+    } else {
+      el.style.backgroundColor = "darkcyan";
     }
+  });
+};
 
-const fullHouse = () => {
+const fullHouse = (event) => {
   let sortedDice = keptDice.sort();
-  
-  if (fullHouseEl.textContent !== '' &&
+  console.log(sortedDice);
+  if (
+    event.target === fullHouseEl &&
+    fullHouseEl.textContent === "" &&
     sortedDice[0] === sortedDice[1] &&
     sortedDice[0] === sortedDice[2] &&
     sortedDice[3] === sortedDice[4]
   ) {
-    fullHouseEl.textContent = 25;
-  }
-  if (upperTotal >= 63) {
-    upperBonus.textContent = 35
+    fullHouseEl.textContent = "25";
+  } else if (event.target === fullHouseEl) {
+    fullHouseEl.textContent = "X";
   }
 };
 
 const diceTotal = (event) => {
-    diceSum = 0
-    if (event.target.id === 'aces-score' && event.target.textContent === '') {
-        keptDice.forEach((dice) => {
-            if (dice === 1) {
-                diceSum += dice
-                
-            }  else if (!keptDice.includes(1)) {
-                diceSum = 'X'
-            }
-        })
-        event.target.textContent = diceSum
-    }
-    if (event.target.id === 'twos-score' && event.target.textContent === '') {
-        keptDice.forEach((dice) => {
-            if (dice === 2) {
-                diceSum += dice
-                
-            }  else if (!keptDice.includes(2)) {
-                diceSum = 'X'
-            }
-        })
-        event.target.textContent = diceSum
-    }
-    
-
-}
-
-const scorePoints = (event) => {
-  diceTotal(event) 
-  fullHouse()
-  justScored = true
-  if (justScored === true) {
-    scoreBoxEls.forEach((el) => {
-        el.removeEventListener('click', scorePoints)
-        rollDiceButton.disabled = true
-        endTurnButton.disabled = false
-    })
-
+  diceSum = 0;
+  if (event.target.id === "aces-score" && event.target.textContent === "") {
+    keptDice.forEach((dice) => {
+      if (dice === 1) {
+        diceSum += dice;
+      } else if (!keptDice.includes(1)) {
+        diceSum = "X";
+      }
+    });
+    event.target.textContent = diceSum;
+  } else if (
+    event.target.id === "twos-score" &&
+    event.target.textContent === ""
+  ) {
+    keptDice.forEach((dice) => {
+      if (dice === 2) {
+        diceSum += dice;
+      } else if (!keptDice.includes(2)) {
+        diceSum = "X";
+      }
+    });
+    event.target.textContent = diceSum;
+  } else if (
+    event.target.id === "threes-score" &&
+    event.target.textContent === ""
+  ) {
+    keptDice.forEach((dice) => {
+      if (dice === 3) {
+        diceSum += dice;
+      } else if (!keptDice.includes(3)) {
+        diceSum = "X";
+      }
+    });
+    event.target.textContent = diceSum;
+  } else if (
+    event.target.id === "fours-score" &&
+    event.target.textContent === ""
+  ) {
+    keptDice.forEach((dice) => {
+      if (dice === 4) {
+        diceSum += dice;
+      } else if (!keptDice.includes(4)) {
+        diceSum = "X";
+      }
+    });
+    event.target.textContent = diceSum;
+  } else if (
+    event.target.id === "fives-score" &&
+    event.target.textContent === ""
+  ) {
+    keptDice.forEach((dice) => {
+      if (dice === 5) {
+        diceSum += dice;
+      } else if (!keptDice.includes(5)) {
+        diceSum = "X";
+      }
+    });
+    event.target.textContent = diceSum;
+  } else if (
+    event.target.id === "sixes-score" &&
+    event.target.textContent === ""
+  ) {
+    keptDice.forEach((dice) => {
+      if (dice === 6) {
+        diceSum += dice;
+      } else if (!keptDice.includes(6)) {
+        diceSum = "X";
+      }
+    });
+    event.target.textContent = diceSum;
   }
-  
-//   turnOver = true;
+  upperScore += diceSum;
 };
 
+const threeOfAKind = (event) => {
+  diceSum = 0;
+  let sortedDice = keptDice.sort();
+  keptDice.forEach((dice) => {
+    if (
+      event.target.id === "three-kind-score" &&
+      sortedDice[0] === sortedDice[1] &&
+      sortedDice[0] === sortedDice[2]
+    ) {
+      diceSum += dice;
+    }
+  });
+  event.target.textContent = diceSum;
+};
 
+const scorePoints = (event) => {
+  diceTotal(event);
+  fullHouse(event);
+  threeOfAKind(event);
+  justScored = true;
+  if (justScored === true) {
+    scoreBoxEls.forEach((el) => {
+      if (el.id === "upper-score") {
+        el.textContent = upperScore;
+      }
+      if (el.id === "bonus" && upperScore >= 63) {
+        el.textContent = "35";
+      }
+      if (el.id === "upper-total") {
+        upperTotal = upperScore + 35;
+      }
+      el.removeEventListener("click", scorePoints);
+      rollDiceButton.disabled = true;
+      endTurnButton.disabled = false;
+    });
+  }
+
+  turnOver = true;
+};
 
 const checkElClicked = (event) => {
   console.log(event.target);
@@ -213,20 +283,8 @@ window.addEventListener("load", init);
 
 newGameButton.addEventListener("click", init);
 
-scoreBoxEls.forEach((el) => {
-  if (el !== upperBonus) {
-    el.addEventListener("click", scorePoints);
-  }
-});
-
 rollDiceButton.addEventListener("click", rollDice);
 
 endTurnButton.addEventListener("click", endTurn);
 
-fullHouseEl.addEventListener('click', scorePoints)
-
-diceImgOne.addEventListener("click", diceToKeep);
-diceImgTwo.addEventListener("click", diceToKeep);
-diceImgThree.addEventListener("click", diceToKeep);
-diceImgFour.addEventListener("click", diceToKeep);
-diceImgFive.addEventListener("click", diceToKeep);
+// fullHouseEl.addEventListener("click", fullHouse);
