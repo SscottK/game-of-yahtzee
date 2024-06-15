@@ -119,6 +119,7 @@ const endTurn = () => {
   });
   roundsRemaining -= 1;
   if ((roundsRemaining = 0)) {
+    gameOver = false
     gamewinner();
   }
 };
@@ -388,6 +389,8 @@ const chance = (event) => {
 const gamewinner = () => {
   if (totalScore >= 200) {
     winLossMessageEl.textContent = `Your score of ${totalScore} was over 250. You Win! `;
+  } else if (gameOver) {
+    winLossMessageEl.textContent =  `Your score of ${totalScore} was under 250. You Lose! `;
   }
 };
 
