@@ -308,49 +308,40 @@ const fourOfAKind = (event) => {
 };
 
 const smallStraightsChecker = (event) => {
-  
   let sorted = keptDice.filter((num, index) => {
     return keptDice.indexOf(num) === index;
   });
 
-  if (event.target.id === "small-straight" && event.target.textContent === '')
-  smallStraights.forEach((combo) => {
-    if (
-      
-      sorted.toString().includes(combo.toString())
-    ) {
-      
-      event.target.textContent = "30";
-    } else {
-      event.target.textContent = 0;
-    }
-
-  });
-    if (event.target.textContent !== "0") {
-    lowerScore += 30;
-    totalScore += 30;
-    }
-}
-const largeStraightCheccker = (event) => {
-  let sorted = keptDice.filter((num, index) => {
-    return keptDice.indexOf(num) === index;
-  });
-  if (event.target.id === "large-straight" && event.target.textContent === '') {
-    largeStraights.forEach((combo) => {
+  if (event.target.id === "small-straight" && event.target.textContent === "")
+    smallStraights.forEach((combo) => {
       if (sorted.toString().includes(combo.toString())) {
-        
-        event.target.textContent = '40';
+        event.target.textContent = "30";
       } else {
         event.target.textContent = 0;
       }
     });
-
+  if (event.target.textContent !== "0") {
+    lowerScore += 30;
+    totalScore += 30;
+  }
+};
+const largeStraightCheccker = (event) => {
+  let sorted = keptDice.filter((num, index) => {
+    return keptDice.indexOf(num) === index;
+  });
+  if (event.target.id === "large-straight" && event.target.textContent === "") {
+    largeStraights.forEach((combo) => {
+      if (sorted.toString().includes(combo.toString())) {
+        event.target.textContent = "40";
+      } else {
+        event.target.textContent = 0;
+      }
+    });
   }
   if (event.target.textContent !== "0") {
     lowerScore += 40;
     totalScore += 40;
-    }
-  
+  }
 };
 
 const yahtzee = (event) => {
@@ -406,7 +397,7 @@ const scorePoints = (event) => {
   threeOfAKind(event);
   fourOfAKind(event);
   smallStraightsChecker(event);
-  largeStraightCheccker(event)
+  largeStraightCheccker(event);
   yahtzee(event);
   chance(event);
   justScored = true;
