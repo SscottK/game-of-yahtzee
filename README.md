@@ -2,12 +2,12 @@
 
 ![Game Screen Shot](images/CE486684-88C5-4D2D-A3EA-474744CD25C4.png)
 
-## Why Yahtzee
-I enjoyed playing this game as a kid and thought it would be fun to make. 
+## About this app
+I enjoyed playing Yahtzee as a kid and thought it would be fun to make as a browser game. This is the first browser game I hace ever made. In the game you can roll dice and score them base on the given scoring methods. You will have to pay attention though as you can only score in each space once. I hope you enjoy playing as much as I do!!
 
 ## Rules
 
-- Just some basics
+### Just some basics
 - Each round a player gets 3 chances to roll the dice. When a player is rolling it is their turn
 - At any point during a players turn they may choose to score their dice. See **"Ways to Score"** below to see how points are scored.
 - If you can not score with the dice after 3 rolls you will have to choose one of the ways to score and "scratch" it.
