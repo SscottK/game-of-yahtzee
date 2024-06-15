@@ -2,6 +2,9 @@
 
 ![Game Screen Shot](images/CE486684-88C5-4D2D-A3EA-474744CD25C4.png)
 
+## Why Yahtzee
+I enjoyed playing this game as a kid and thought it would be fun to make. 
+
 ## Rules
 
 - Just some basics
@@ -38,8 +41,10 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
 
 ## Future plans
 
-- I want to add multiplayer
-- I would like to add animations and custom dice images
+- Add multiplayer
+- Add Pixle Art style theme
+- Add animations and custom dice images
+- Add custom fonts to match styling
 
 
 
