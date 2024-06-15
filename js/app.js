@@ -1,9 +1,10 @@
-console.log("I am working");
 /*----- constants -----*/
-const straightsCombos = [
+const smallStraights = [
   [1, 2, 3, 4],
   [2, 3, 4, 5],
   [3, 4, 5, 6],
+];
+const largeStraights = [
   [1, 2, 3, 4, 5],
   [2, 3, 4, 5, 6],
 ];
@@ -94,7 +95,6 @@ const rollDice = () => {
     index += 1;
   });
 
- 
   rollCount -= 1;
 
   if (rollCount === 0) {
@@ -114,7 +114,7 @@ const endTurn = () => {
   diceImgEls.forEach((el) => {
     el.classList.remove("keeping");
     el.removeEventListener("click", removeKeeping);
-    console.log(el);
+
     changeDiceColor();
   });
   roundsRemaining -= 1;
@@ -144,8 +144,6 @@ const diceToKeep = (event) => {
   event.target.addEventListener("click", removeKeeping);
 
   changeDiceColor();
-
-  console.log(event.target);
 };
 
 const changeDiceColor = () => {
@@ -160,7 +158,6 @@ const changeDiceColor = () => {
 
 const fullHouse = (event) => {
   let sortedDice = keptDice.sort();
-  console.log(sortedDice);
   if (sortedDice[0] !== sortedDice[4]) {
     if (
       (event.target.id === "full-house" &&
@@ -174,7 +171,7 @@ const fullHouse = (event) => {
     ) {
       lowerScore += 25;
       totalScore += 25;
-      console.log("worked");
+
       fullHouseEl.textContent = "25";
     } else if (event.target.id === "full-house") {
       fullHouseEl.textContent = 0;
@@ -315,35 +312,32 @@ const straightsChecker = (event) => {
     return keptDice.indexOf(num) === index;
   });
 
-  if (event.target.id === "small-straight") {
-    sorted.forEach((number)=> {
-      straightsCombos.forEach((combo) => {        
-        if (combo.map((num) => num === number)) {          
-          event.target.textContent = "30";
-          
-        } else {
-          event.target.textContent = 0;
-        }
-      });
-    });
-    // lowerScore += 30;
-    // totalScore += 30;
-  }
-  if (event.target.id === "large-straight") {
-    straightsCombos.forEach((combo) => {
-      sorted.forEach((number) => {
-        if (combo.map((num) => num === number)) {
-          console.log("workedd");
+ 
+    let points = 0
+    smallStraights.forEach((combo) => {
+      if (event.target.id === "small-straight" && sorted.toString().includes(combo.toString())) {
+        points += 30
+        event.target.textContent = points
+      } else {
+        event.target.textContent = 0;
+      }
 
-          event.target.textContent = "40";
-        } else {
-          event.target.textContent = 0;
-        }
-      });
     });
-    lowerScore += 40;
-    totalScore += 40;
-  }
+      lowerScore += points;
+      totalScore += points;
+  
+  
+    largeStraights.forEach((combo) => {
+      if (event.target.id === "large-straight"  && sorted.toString().includes(combo.toString())) {
+        points += 30
+        event.target.textContent = "40";
+      } else {
+        event.target.textContent = 0;
+      }
+    });
+    lowerScore += points;
+    totalScore += points;
+  
 };
 
 const yahtzee = (event) => {
