@@ -16,7 +16,7 @@ I enjoyed playing Yahtzee as a kid and thought it would be fun to make as a brow
 
 ## Ways to score
 
-- One way to score is to add together all dice that are matching numbers. For example if you have four 2's you can select the twos score box and you will score 8 points.
+- One way to score is to add together all dice that are matching numbers. For example if you have four 2's you will score 8 points.
 - Another way to score is to use one of the patterns. There are six different patterns scores.
     - Three and Four of a kind. If you have any 3 or 4 dice with matching numbers the points are the total of all dice added together.
     - Full House. If you have two matching dice and three matching dice at one time you score 25 points.
