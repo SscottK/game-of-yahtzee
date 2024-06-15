@@ -10,15 +10,17 @@
 <body>
     <div id="game-settings">
         <p id="screen-title"><h1>YAHTZEE</h1></p>
+        <!-- future fuctionality
         Players 1<input type="checkbox" name="player1" id="player1" required checked>
         2<input type="checkbox" name="player2" id="player2">
         3<input type="checkbox" name="player3" id="player3">
-        4<input type="checkbox" name="player4" id="player4">
+        4<input type="checkbox" name="player4" id="player4"> -->
         <button type="button" id="new-game">New Game</button>
     </div>
    <div>
     <div id="main">
         <div id="score-card">
+            <h1 id="win-loss-message"></h1>
             <h1>Score Card</h1>
             <div>Upper</div>
             <div class="upper-section" id="dice">Aces = 1<div class="score-box" id="aces-score"></div></div>        
@@ -37,7 +39,7 @@
             <div class="lower-section" id="dice">Small Straight<div class="score-box" id="small-straight"></div></div>  
             <div class="lower-section" id="dice">Large Straight<div class="score-box" id="large-straight"></div></div>        
             <div class="lower-section" id="dice">Yahtzee<div class="score-box" id="yahtzee"></div></div>
-            <div class="lower-section" id="dice">Yahtzee Bonus<div id="yahtzee-bonus"><input type="checkbox" name="yahtzee-bonus" id="yahtzee-bonus-one"><input type="checkbox" name="yahtzee-bonus" id="yahtzee-bonus-two"><input type="checkbox" name="yahtzee-bonus" id="yahtzee-bonus-three"></div></div>         
+            <div class="lower-section" id="dice">Yahtzee Bonus<div class="score-box" id="yahtzee-bonus"></div></div>         
             <div class="lower-section" id="dice">Chance<div class="score-box" id="chance"></div></div>
             <div class="lower-section" id="lower-totals">Lower Total<div class="score-box" id="lower-total"></div></div>
             <div class="lower-section" id="upper-totals">Upper Total<div class="score-box" id="upper-total"></div></div>

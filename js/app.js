@@ -20,8 +20,11 @@ let keptDice = [];
 let diceSum = 0;
 let turnOver = false;
 let initalNum = 1;
-let roundsRemaining = 13;
+let roundsRemaining = 16;
 let justScored = false;
+let bonusCount = 3;
+let bonusScore = 0;
+let chanceScore = 0;
 
 /*--let cached elements  -----*/
 
@@ -37,7 +40,8 @@ const diceImgTwo = document.querySelector("#dice-second");
 const diceImgThree = document.querySelector("#dice-third");
 const diceImgFour = document.querySelector("#dice-fourth");
 const diceImgFive = document.querySelector("#dice-fifth");
-const checkBoxEls = document.querySelectorAll("kept-dice");
+const yahtzeeBonusEl = document.querySelectorAll("#yahtzee-bonus");
+const winLossMessageEl = document.querySelector("#win-loss-message");
 
 /*----- functions -----*/
 const init = () => {
@@ -45,7 +49,7 @@ const init = () => {
   upperTotal = 0;
   upperScore = 0;
   lowerScore = 0;
-  roundsRemaining = 13;
+  roundsRemaining = 16;
   gameOver = false;
   totalScore = 0;
   rollCount = 3;
@@ -53,6 +57,9 @@ const init = () => {
   diceSum = 0;
   initalNum = 1;
   justScored = false;
+  bonusCount = 3;
+  bonusScore = 0;
+  chanceScore = 0;
   rollDiceButton.disabled = false;
   endTurnButton.disabled = true;
   turnOver = false;
@@ -86,7 +93,8 @@ const rollDice = () => {
     }
     index += 1;
   });
-  console.log(keptDice);
+
+ 
   rollCount -= 1;
 
   if (rollCount === 0) {
@@ -153,17 +161,24 @@ const changeDiceColor = () => {
 const fullHouse = (event) => {
   let sortedDice = keptDice.sort();
   console.log(sortedDice);
-  if (
-    event.target === fullHouseEl &&
-    fullHouseEl.textContent === "" &&
-    sortedDice[0] === sortedDice[1] &&
-    sortedDice[0] === sortedDice[2] &&
-    sortedDice[3] === sortedDice[4]
-  ) {
-    console.log("worked");
-    fullHouseEl.textContent = "25";
-  } else if (event.target === fullHouseEl) {
-    fullHouseEl.textContent = "X";
+  if (sortedDice[0] !== sortedDice[4]) {
+    if (
+      (event.target.id === "full-house" &&
+        event.target === "" &&
+        sortedDice[0] === sortedDice[1] &&
+        sortedDice[0] === sortedDice[2] &&
+        sortedDice[3] === sortedDice[4]) ||
+      (sortedDice[0] === sortedDice[1] &&
+        sortedDice[2] === sortedDice[3] &&
+        sortedDice[2] === sortedDice[4])
+    ) {
+      lowerScore += 25;
+      totalScore += 25;
+      console.log("worked");
+      fullHouseEl.textContent = "25";
+    } else if (event.target.id === "full-house") {
+      fullHouseEl.textContent = 0;
+    }
   }
 };
 
@@ -174,7 +189,7 @@ const diceTotal = (event) => {
       if (dice === 1) {
         diceSum += dice;
       } else if (!keptDice.includes(1)) {
-        diceSum = "X";
+        diceSum = 0;
       }
     });
     event.target.textContent = diceSum;
@@ -186,7 +201,7 @@ const diceTotal = (event) => {
       if (dice === 2) {
         diceSum += dice;
       } else if (!keptDice.includes(2)) {
-        diceSum = "X";
+        diceSum = 0;
       }
     });
     event.target.textContent = diceSum;
@@ -198,7 +213,7 @@ const diceTotal = (event) => {
       if (dice === 3) {
         diceSum += dice;
       } else if (!keptDice.includes(3)) {
-        diceSum = "X";
+        diceSum = 0;
       }
     });
     event.target.textContent = diceSum;
@@ -210,7 +225,7 @@ const diceTotal = (event) => {
       if (dice === 4) {
         diceSum += dice;
       } else if (!keptDice.includes(4)) {
-        diceSum = "X";
+        diceSum = 0;
       }
     });
     event.target.textContent = diceSum;
@@ -222,7 +237,7 @@ const diceTotal = (event) => {
       if (dice === 5) {
         diceSum += dice;
       } else if (!keptDice.includes(5)) {
-        diceSum = "X";
+        diceSum = 0;
       }
     });
     event.target.textContent = diceSum;
@@ -234,34 +249,41 @@ const diceTotal = (event) => {
       if (dice === 6) {
         diceSum += dice;
       } else if (!keptDice.includes(6)) {
-        diceSum = "X";
+        diceSum = 0;
       }
     });
     event.target.textContent = diceSum;
   }
   upperScore += diceSum;
+
+  totalScore += diceSum;
 };
 
 const threeOfAKind = (event) => {
   diceSum = 0;
   let sortedDices = keptDice.sort();
-  keptDice.forEach((dice) => {
-    if (
-      (event.target.id === "three-kind-score" &&
-        sortedDices[0] === sortedDices[1] &&
-        sortedDices[0] === sortedDices[2]) ||
-      (sortedDices[1] === sortedDices[2] &&
-        sortedDices[1] === sortedDices[3]) ||
-      (sortedDices[2] === sortedDices[3] && sortedDices[2] === sortedDices[4])
-    ) {
-      diceSum += dice;
+  if (
+    event.target.id === "three-kind-score" &&
+    event.target.textContent === ""
+  ) {
+    keptDice.forEach((dice) => {
+      if (
+        (sortedDices[0] === sortedDices[1] &&
+          sortedDices[0] === sortedDices[2]) ||
+        (sortedDices[1] === sortedDices[2] &&
+          sortedDices[1] === sortedDices[3]) ||
+        (sortedDices[2] === sortedDices[3] && sortedDices[2] === sortedDices[4])
+      ) {
+        diceSum += dice;
 
-      event.target.textContent = diceSum;
-    } else if (event.target.id === "three-kind-score") {
-      event.target.textContent = "X";
-    }
-  });
-  lowerScore = diceSum;
+        event.target.textContent = diceSum;
+      } else if (event.target.id === "three-kind-score") {
+        event.target.textContent = 0;
+      }
+    });
+  }
+  lowerScore += diceSum;
+  totalScore += diceSum;
 };
 
 const fourOfAKind = (event) => {
@@ -280,17 +302,105 @@ const fourOfAKind = (event) => {
       diceSum += dice;
 
       event.target.textContent = diceSum;
-    } else if (event.target.id === "three-kind-score") {
-      event.target.textContent = "X";
+    } else if (event.target.id === "four-kind-score") {
+      event.target.textContent = 0;
     }
   });
-  lowerScore = diceSum;
+  lowerScore += diceSum;
+  totalScore += diceSum;
+};
+
+const straightsChecker = (event) => {
+  let sorted = keptDice.filter((num, index) => {
+    return keptDice.indexOf(num) === index;
+  });
+
+  if (event.target.id === "small-straight") {
+    sorted.forEach((number)=> {
+      straightsCombos.forEach((combo) => {        
+        if (combo.map((num) => num === number)) {          
+          event.target.textContent = "30";
+          
+        } else {
+          event.target.textContent = 0;
+        }
+      });
+    });
+    // lowerScore += 30;
+    // totalScore += 30;
+  }
+  if (event.target.id === "large-straight") {
+    straightsCombos.forEach((combo) => {
+      sorted.forEach((number) => {
+        if (combo.map((num) => num === number)) {
+          console.log("workedd");
+
+          event.target.textContent = "40";
+        } else {
+          event.target.textContent = 0;
+        }
+      });
+    });
+    lowerScore += 40;
+    totalScore += 40;
+  }
+};
+
+const yahtzee = (event) => {
+  if (event.target.id === "yahtzee") {
+    keptDice.forEach((dice) => {
+      if (keptDice[dice] === keptDice[dice] + 1) {
+        event.target.textContent = "50";
+
+        console.log("yahtzee");
+      } else {
+        event.target.textContent = 0;
+      }
+    });
+    if (event.target.textContent !== 0) {
+      lowerScore += 50;
+      totalScore += 50;
+    }
+  }
+
+  if (event.target.id === "yahtzee-bonus" && bonusCount > 0) {
+    scoreBoxEls.forEach((el) => {
+      if (el.id == "yahtzee" && el.textContent === "50") {
+        console.log("working");
+        bonusScore += 100;
+        lowerScore += 100;
+        totalScore += 100;
+        bonusCount -= 1;
+        event.target.textContent = bonusScore;
+      }
+    });
+  }
+};
+const chance = (event) => {
+  if (event.target.id === "chance") {
+    keptDice.forEach((dice) => {
+      chanceScore += dice;
+    });
+    event.target.textContent = chanceScore;
+    lowerScore += chanceScore;
+    totalScore += chanceScore;
+  }
+};
+
+const gamewinner = () => {
+  if (totalScore >= 200) {
+    winLossMessageEl.textContent = `Your score ${totalScore} was over 250. You Win! `;
+  }
 };
 
 const scorePoints = (event) => {
   diceTotal(event);
   fullHouse(event);
   threeOfAKind(event);
+  fourOfAKind(event);
+  straightsChecker(event);
+  yahtzee(event);
+  chance(event);
   justScored = true;
   if (justScored === true) {
     scoreBoxEls.forEach((el) => {
@@ -298,16 +408,18 @@ const scorePoints = (event) => {
         el.textContent = upperScore;
       }
       if (el.id === "bonus" && upperScore >= 63) {
+        upperScore += 35;
         el.textContent = "35";
       }
       if (el.id === "upper-total") {
-        upperTotal = upperScore + 35;
+        upperTotal = upperScore;
+        el.textContent = upperTotal;
       }
+
       if (el.id === "lower-total") {
         el.textContent = lowerScore;
       }
       if (el.id === "totals") {
-        totalScore = upperScore + lowerScore;
         el.textContent = totalScore;
       }
       el.removeEventListener("click", scorePoints);
@@ -317,10 +429,6 @@ const scorePoints = (event) => {
   }
 
   turnOver = true;
-};
-
-const checkElClicked = (event) => {
-  console.log(event.target);
 };
 
 /*----- event listeners -----*/
