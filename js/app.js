@@ -50,7 +50,7 @@ const init = () => {
   upperTotal = 0;
   upperScore = 0;
   lowerScore = 0;
-  roundsRemaining = 16;
+  roundsRemaining = 0;
   gameOver = false;
   totalScore = 0;
   rollCount = 3;
@@ -61,6 +61,7 @@ const init = () => {
   bonusCount = 3;
   bonusScore = 0;
   chanceScore = 0;
+  winLossMessageEl.textContent = ''
   rollDiceButton.disabled = false;
   endTurnButton.disabled = true;
   turnOver = false;
@@ -106,6 +107,7 @@ const rollDice = () => {
 
 const endTurn = () => {
   if (turnOver === true) {
+    roundsRemaining -= 1;
     rollCount = 3;
     rollDiceButton.disabled = false;
     endTurnButton.disabled = true;
@@ -117,11 +119,8 @@ const endTurn = () => {
 
     changeDiceColor();
   });
-  roundsRemaining -= 1;
-  if ((roundsRemaining = 0)) {
-    gameOver = false
-    gamewinner();
-  }
+  
+
 };
 
 const removeKeeping = (event) => {
@@ -308,59 +307,60 @@ const fourOfAKind = (event) => {
   totalScore += diceSum;
 };
 
+
 const smallStraightsChecker = (event) => {
   let sorted = keptDice.filter((num, index) => {
     return keptDice.indexOf(num) === index;
   });
+  let frontDiff = sorted[3] - sorted[0];
+  let midDiff = sorted[4] - sorted[1];
 
-  if (event.target.id === "small-straight" && event.target.textContent === "")
-    smallStraights.forEach((combo) => {
-      if (sorted.toString().includes(combo.toString())) {
-        event.target.textContent = "30";
-      } else {
-        event.target.textContent = 0;
-      }
-    });
-  if (event.target.textContent !== "0") {
+  if (
+    (event.target.id === "small-straight" && (frontDiff === 3 ||
+    midDiff === 3)
+  )) {
+    console.log('small', event.target)
+    event.target.textContent = 30;
     lowerScore += 30;
     totalScore += 30;
+  } else if (
+    (event.target.id === "small-straight" && (frontDiff !== 3 ||
+      midDiff !== 3)
+    )
+  ) {
+    event.target.textContent = 0
   }
-};
-const largeStraightCheccker = (event) => {
+}
+
+const largeStraightChecker = (event) => {
   let sorted = keptDice.filter((num, index) => {
     return keptDice.indexOf(num) === index;
   });
-  if (event.target.id === "large-straight" && event.target.textContent === "") {
-    largeStraights.forEach((combo) => {
-      if (sorted.toString().includes(combo.toString())) {
-        event.target.textContent = "40";
-      } else {
-        event.target.textContent = 0;
-      }
-    });
-  }
-  if (event.target.textContent !== "0") {
+
+  let differential = sorted[4] - sorted[0];
+
+  if (event.target.id === "large-straight" && differential === 4) {
+    console.log('large', event.target)
+    event.target.textContent = 40;
     lowerScore += 40;
     totalScore += 40;
+  } else if (event.target.id === "large-straight"  && differential !== 4) {
+    event.target.textContent = 0
   }
 };
 
 const yahtzee = (event) => {
-  if (event.target.id === "yahtzee") {
-    keptDice.forEach((dice) => {
-      if (keptDice[dice] === keptDice[dice] + 1) {
-        event.target.textContent = "50";
-
-        console.log("yahtzee");
-      } else {
-        event.target.textContent = 0;
-      }
-    });
-    if (event.target.textContent !== 0) {
-      lowerScore += 50;
-      totalScore += 50;
+  let yahtzeeSorted = keptDice.sort()
+  if (event.target.id === "yahtzee" && yahtzeeSorted[0] === yahtzeeSorted[4]) {
+    event.target.textContent = 50
+    lowerScore += 50;
+    totalScore += 50;
+  } else if (event.target.id === "yahtzee" && yahtzeeSorted[0] !== yahtzeeSorted[4]) {
+      event.target.textContent = 0 
     }
-  }
+    
+  
+
 
   if (event.target.id === "yahtzee-bonus" && bonusCount > 0) {
     scoreBoxEls.forEach((el) => {
@@ -390,17 +390,18 @@ const gamewinner = () => {
   if (totalScore >= 200) {
     winLossMessageEl.textContent = `Your score of ${totalScore} was over 250. You Win! `;
   } else if (gameOver) {
-    winLossMessageEl.textContent =  `Your score of ${totalScore} was under 250. You Lose! `;
+    winLossMessageEl.textContent = `Your score of ${totalScore} was under 250. You Lose! `;
   }
 };
 
 const scorePoints = (event) => {
+  console.log(roundsRemaining)
   diceTotal(event);
   fullHouse(event);
   threeOfAKind(event);
   fourOfAKind(event);
   smallStraightsChecker(event);
-  largeStraightCheccker(event);
+  largeStraightChecker(event);
   yahtzee(event);
   chance(event);
   justScored = true;
@@ -431,6 +432,12 @@ const scorePoints = (event) => {
   }
 
   turnOver = true;
+  if (roundsRemaining === 0) {
+    rollDiceButton.disabled = true;
+    endTurnButton.disabled = true;
+    gameOver = true;
+    gamewinner();
+  }
 };
 
 /*----- event listeners -----*/
