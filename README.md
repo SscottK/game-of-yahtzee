@@ -1,6 +1,6 @@
 # Lets Play YAHTZEE!
 
-![Game Screen Shot](images/CE486684-88C5-4D2D-A3EA-474744CD25C4.png)
+![Game Screen Shot](images/yahtzee-app.png)
 
 [Play Yahtzee here](https://sscottk.github.io/game-of-yahtzee/)
 
