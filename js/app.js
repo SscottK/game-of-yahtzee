@@ -317,7 +317,7 @@ const smallStraightsChecker = (event) => {
     event.target.id === "small-straight" &&
     (frontDiff === 3 || midDiff === 3)
   ) {
-    console.log("small", event.target);
+    
     event.target.textContent = 30;
     lowerScore += 30;
     totalScore += 30;
@@ -337,7 +337,7 @@ const largeStraightChecker = (event) => {
   let differential = sorted[4] - sorted[0];
 
   if (event.target.id === "large-straight" && differential === 4) {
-    console.log("large", event.target);
+    
     event.target.textContent = 40;
     lowerScore += 40;
     totalScore += 40;
@@ -391,7 +391,7 @@ const gamewinner = () => {
 
 const scorePoints = (event) => {
   roundsRemaining -= 1;
-  console.log(roundsRemaining);
+  
   diceTotal(event);
   fullHouse(event);
   threeOfAKind(event);
