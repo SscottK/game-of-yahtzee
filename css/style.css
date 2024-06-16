@@ -31,6 +31,7 @@ body {
     display: flex;
     border: 1px solid gray;
     flex-direction: column;
+    
 }
 
 #rules {
@@ -41,17 +42,19 @@ body {
     display: flex;
     justify-content: flex-start;
     flex-direction: column;
-    border: 1px solid gray;       
+    border: 1px solid gray;
+         
     
 }
 
  .upper-section, .lower-section {
-    /* padding: 25px; */
+    font-size: 25px;
     display: flex;
-    justify-content: space-between;    
+    justify-content: space-between;
     border-bottom: 1px solid gray ;
     
 }
+
 
 .triples, .aces {
     border-top: 1px solid gray;
@@ -60,7 +63,7 @@ body {
 
 
 .score-box{
-    width: 20%;
+    width: 20%;    
     background-color: black;
     display: flex;
     justify-content: center;
