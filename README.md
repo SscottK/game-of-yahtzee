@@ -36,15 +36,17 @@ I enjoyed playing Yahtzee as a kid and thought it would be fun to make as a brow
 ## Attributions
 
 If I needed something that wasn't in my notes I searched through MDN.
-
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
+
+Font: https://fonts.google.com/specimen/Pixelify+Sans?query=pixel
 
 ## Future plans
 
 - Add multiplayer
 - Add Pixle Art style theme
 - Add animations and custom dice images
-- Add custom fonts to match styling
+- ✔ Add custom fonts to match styling (added 6/16/2024)
+    
 
 
 
