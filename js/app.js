@@ -382,10 +382,10 @@ const chance = (event) => {
 };
 
 const gamewinner = () => {
-  if (totalScore >= 200) {
-    winLossMessageEl.textContent = `Your score of ${totalScore} was over 250. You Win!`;
+  if (totalScore >= 150) {
+    winLossMessageEl.textContent = `Your score of ${totalScore} was over 150. You Win!`;
   } else if (gameOver) {
-    winLossMessageEl.textContent = `Your score of ${totalScore} was under 250. You Lose!`;
+    winLossMessageEl.textContent = `Your score of ${totalScore} was under 150. You Lose!`;
   }
 };
 
