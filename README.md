@@ -2,6 +2,8 @@
 
 ![Game Screen Shot](images/CE486684-88C5-4D2D-A3EA-474744CD25C4.png)
 
+[Play Yahtzee here](https://sscottk.github.io/game-of-yahtzee/)
+
 ## About this app
 I enjoyed playing Yahtzee as a kid and thought it would be fun to make as a browser game. This is the first browser game I hace ever made. In the game you can roll dice and score them base on the given scoring methods. You will have to pay attention though as you can only score in each space once. I hope you enjoy playing as much as I do!!
 
