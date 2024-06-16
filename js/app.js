@@ -159,7 +159,10 @@ const changeDiceColor = () => {
 };
 
 const fullHouse = (event) => {
-  let sortedDice = keptDice.sort();  
+  let sortedDice = keptDice.sort();
+    if (event.target.id !== 'full-house') {
+      return
+    }  
     if (
       event.target.id === "full-house" &&
         (sortedDice[0] === sortedDice[2] &&
@@ -168,7 +171,6 @@ const fullHouse = (event) => {
     ) {
       lowerScore += 25;
       totalScore += 25;
-
       fullHouseEl.textContent = "25";
     } else if (event.target.id === "full-house") {
       fullHouseEl.textContent = 0;
@@ -178,7 +180,7 @@ const fullHouse = (event) => {
 
 const diceTotal = (event) => {
   diceSum = 0;
-  if (event.target.id === "aces-score" && event.target.textContent === "") {
+  if (event.target.id === "aces-score") {
     keptDice.forEach((dice) => {
       if (dice === 1) {
         diceSum += dice;
