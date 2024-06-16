@@ -1,7 +1,20 @@
+/* // <uniquifier>: Use a unique and descriptive class name
+// <weight>: Use a value from 400 to 700
+
+.pixelify-sans-<uniquifier> {
+  font-family: "Pixelify Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+} */
+
 body {
+    font-family: "Pixelify Sans", sans-serif;
+    
     margin: 0;    
     background-color: darkcyan;
     color: lightgray;
+    /* font-weight: bold; */
 }
 
 #main { 
@@ -33,13 +46,16 @@ body {
     
 }
 
-#dice, .upper-section, .lower-section {
+ .upper-section, .lower-section {
     padding: 25px;
     display: flex;
-    justify-content: space-between;
-    border-top: 1px solid gray;
+    justify-content: space-between;    
     border-bottom: 1px solid gray ;
     
+}
+
+.triples, .aces {
+    border-top: 1px solid gray;
 }
 
 
@@ -65,16 +81,21 @@ body {
     text-align: left;
 }
 
-#game-settings {
-    text-align: center;
+#game-settings, #screen-title {
+   display: flex;
+   flex-direction: column;
+   margin: auto;
+   justify-content: space-around;
+   width: 20%;
+   text-align: center;  
 }
 
 #dice-imgs {
     width: 30%;
     display: flex;
     flex-direction: column;
-    
-    
+    font-size: 30px;
+        
 }
 
 #dice-first, #dice-second, #dice-third, #dice-fourth, #dice-fifth {
@@ -82,18 +103,31 @@ body {
     flex-direction: column;
     justify-content: center;
     text-align: center;  
-    margin: 25px auto;
+    margin:12.5px auto;
     width: 50px;
     height: 50px;;
     border: 1px solid black;
     border-radius: 20%;
 }
 
-#bottom-buttons {
+#bottom-buttons, #new-game {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+
 }
 
 .shown-dice {
     background-color: darkcyan;
 }
+
+#total {
+    border-bottom: 0px;
+}
+
+#new-game {
+    
+    text-align: center;
+    margin: 0 auto;    
+}
+
+

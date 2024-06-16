@@ -50,7 +50,7 @@ const init = () => {
   upperTotal = 0;
   upperScore = 0;
   lowerScore = 0;
-  roundsRemaining = 16;
+  roundsRemaining = 13;
   gameOver = false;
   totalScore = 0;
   rollCount = 3;
@@ -151,6 +151,7 @@ const changeDiceColor = () => {
   diceImgEls.forEach((el) => {
     if (el.className.match("keeping")) {
       el.style.backgroundColor = "red";
+      
     } else {
       el.style.backgroundColor = "darkcyan";
     }
@@ -158,8 +159,7 @@ const changeDiceColor = () => {
 };
 
 const fullHouse = (event) => {
-  let sortedDice = keptDice.sort();
-  if (sortedDice[0] !== sortedDice[4]) {
+  let sortedDice = keptDice.sort();  
     if (
       event.target.id === "full-house" &&
         (sortedDice[0] === sortedDice[2] &&
@@ -173,7 +173,7 @@ const fullHouse = (event) => {
     } else if (event.target.id === "full-house") {
       fullHouseEl.textContent = 0;
     }
-  }
+  
 };
 
 const diceTotal = (event) => {
@@ -283,9 +283,10 @@ const threeOfAKind = (event) => {
 const fourOfAKind = (event) => {
   diceSum = 0;
   let sortedDices = keptDice.sort();
+  if (event.target.id === "four-kind-score") {
   keptDice.forEach((dice) => {
     if (
-      (event.target.id === "four-kind-score" &&
+      (
         sortedDices[0] === sortedDices[1] &&
         sortedDices[0] === sortedDices[2] &&
         sortedDices[0] === sortedDices[3]) ||
@@ -300,6 +301,7 @@ const fourOfAKind = (event) => {
       event.target.textContent = 0;
     }
   });
+}
   lowerScore += diceSum;
   totalScore += diceSum;
 };

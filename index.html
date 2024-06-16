@@ -5,12 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script defer src="./js/app.js"></script>
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
     <title>Yahtzee</title>
 </head>
 <body>
     <div id="game-settings">
-        <p id="screen-title"><h1>YAHTZEE</h1></p>  
-        <button type="button" id="new-game">New Game</button>
+        <p id="screen-title"><h1>YAHTZEE</h1></p>        
     </div>
    <div>
     <div id="main">
@@ -18,7 +20,7 @@
             <h1 id="win-loss-message"></h1>
             <h1>Score Card</h1>
             <div>Upper</div>
-            <div class="upper-section" id="dice">Aces = 1<div class="score-box" id="aces-score"></div></div>        
+            <div class="upper-section aces" id="dice">Aces = 1<div class="score-box" id="aces-score"></div></div>        
             <div class="upper-section" id="dice">Twos = 2<div class="score-box" id="twos-score"></div></div>
             <div class="upper-section" id="dice">Threes = 3<div class="score-box" id="threes-score"></div></div>  
             <div class="upper-section" id="dice">Fours = 4<div class="score-box" id="fours-score"></div></div>        
@@ -28,8 +30,8 @@
             <div class="upper-section" id="upper-bonus">Upper Bonus<div class="score-box" id="bonus"></div></div>
             <div class="upper-section" id="upper-totals">Upper Total<div class="score-box" id="upper-total"></div></div>
             <div>Lower</div>
-            <div class="lower-section" id="dice">3 of a kind<div class="score-box multiples" id="three-kind-score"></div></div>        
-            <div class="lower-section" id="dice">4 of a kind<div class="score-box multiples" id="four-kind-score"></div></div>
+            <div class="lower-section triples" id="dice">3 of a kind<div class="score-box" id="three-kind-score"></div></div>        
+            <div class="lower-section" id="dice">4 of a kind<div class="score-box" id="four-kind-score"></div></div>
             <div class="lower-section" id="dice">Full House<div class="score-box" id="full-house"></div></div>
             <div class="lower-section" id="dice">Small Straight<div class="score-box" id="small-straight"></div></div>  
             <div class="lower-section" id="dice">Large Straight<div class="score-box" id="large-straight"></div></div>        
@@ -41,6 +43,7 @@
             <div class="lower-section" id="total">Total Score<div class="score-box" id="totals"></div></div>
         </div>    
         <div id="dice-imgs">
+            <button type="button" id="new-game">New Game</button>
            <div class="shown-dice" id="dice-first">1</div>
            <div class="shown-dice" id="dice-second">2</div>
            <div class="shown-dice" id="dice-third">3</div>
