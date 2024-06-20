@@ -43,6 +43,7 @@ const diceImgFour = document.querySelector("#dice-fourth");
 const diceImgFive = document.querySelector("#dice-fifth");
 const yahtzeeBonusEl = document.querySelector("#yahtzee-bonus");
 const winLossMessageEl = document.querySelector("#win-loss-message");
+const rollCountEl = document.querySelector("#roll-count")
 
 /*----- functions -----*/
 const init = () => {
@@ -75,6 +76,7 @@ const init = () => {
   scoreBoxEls.forEach((el) => {
     el.textContent = "";
   });
+  rollCountEl.textContent = `Rolls Remaining: ${rollCount}`
 };
 
 const rollDice = () => {
@@ -102,6 +104,7 @@ const rollDice = () => {
   });
 
   rollCount -= 1;
+  rollCountEl.textContent = `Rolls Remaining: ${rollCount}`
 
   if (rollCount === 0) {
     rollDiceButton.disabled = true;
@@ -115,13 +118,15 @@ const endTurn = () => {
     rollDiceButton.disabled = false;
     endTurnButton.disabled = true;
     turnOver = false;
+    rollCountEl.textContent = `Rolls Remaining: ${rollCount}`
   }
   diceImgEls.forEach((el) => {
     el.classList.remove("keeping");
-    el.removeEventListener("click", removeKeeping);
+    el.removeEventListener("click", diceToKeep);
 
     changeDiceColor();
   });
+
 };
 
 const removeKeeping = (event) => {
@@ -433,6 +438,7 @@ const scorePoints = (event) => {
       }
     });
   }
+
 };
 
 /*----- event listeners -----*/

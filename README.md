@@ -40,7 +40,15 @@ I enjoyed playing Yahtzee as a kid and thought it would be fun to make as a brow
 If I needed something that wasn't in my notes I searched through MDN.
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
 
-Font: https://fonts.google.com/specimen/Pixelify+Sans?query=pixel
+Font was a 2 stage process:
+Found and downloaded .ttf file from:
+https://www.1001fonts.com/exepixelperfect-font.html?page=5
+
+converted to a format I could use here:
+https://transfonter.org/
+
+Found the converter info here:
+https://stackoverflow.com/questions/24990554/how-to-include-a-font-ttf-using-css
 
 ## Future plans
 
