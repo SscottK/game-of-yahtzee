@@ -63,8 +63,9 @@ const init = () => {
     el.textContent = "";
   });
   diceImgEls.forEach((el) => {
+    el.className.remove('keeping')
     el.style.backgroundColor = 'darkcyan';
-    el.setAttribute('class', 'shown-dice');
+    // el.setAttribute('class', 'shown-dice');
   })
   rollCountEl.textContent = `Rolls Remaining: ${rollCount}`
 };

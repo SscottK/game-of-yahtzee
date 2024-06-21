@@ -50,6 +50,9 @@ https://transfonter.org/
 Found the converter info here:
 https://stackoverflow.com/questions/24990554/how-to-include-a-font-ttf-using-css
 
+Custom made Dice face images by me using Aseprite (I used the steamed version):
+https://aseprite.org/
+
 ## Future plans
 
 - Add multiplayer
