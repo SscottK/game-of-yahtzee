@@ -57,11 +57,12 @@ const init = () => {
   scoreBoxEls.forEach((el) => {
     el.textContent = "";
   });
-  // diceImgEls.forEach((el) => {
-  //   el.className.remove('keeping')
-  //   el.style.backgroundColor = 'darkcyan';
-  //   // el.setAttribute('class', 'shown-dice');
-  // })
+  diceImgEls.forEach((el) => {
+    el.classList.remove("keeping");
+    el.removeEventListener("click", diceToKeep);
+
+    changeDiceColor();
+  });
   changeDiceColor()
   rollCountEl.textContent = `Rolls Remaining: ${rollCount}`
 };
