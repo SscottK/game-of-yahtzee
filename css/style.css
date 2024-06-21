@@ -24,10 +24,12 @@ body {
 #score-card {
   background-color: blueviolet;
   text-align: center;
-  width: 30%;
+  width: 15%;
   display: flex;
   border: 1px solid gray;
   flex-direction: column;
+  height: 1%;
+  margin-left: 15%;
 }
 
 #rules {
