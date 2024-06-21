@@ -1,145 +1,134 @@
 @font-face {
-    font-family: 'EXEPixelPerfect';
-    src: url('EXEPixelPerfect.woff2') format('woff2'),
-        url('EXEPixelPerfect.woff') format('woff');
-    font-weight: 500;
-    font-style: normal;
-    font-display: swap;
+  font-family: "EXEPixelPerfect";
+  src: url("EXEPixelPerfect.woff2") format("woff2"),
+    url("EXEPixelPerfect.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
 }
 
 body {
-    font-family: 'EXEPixelPerfect', sans-serif;
-    
-    margin: 0;    
-    background-color: darkcyan;
-    color: lightgray;
-    /* font-weight: bold; */
+  font-family: "EXEPixelPerfect", sans-serif;
+
+  margin: 0;
+  background-color: darkcyan;
+  color: lightgray;
+  /* font-weight: bold; */
 }
 
-#main { 
-     
-    display: flex;
-    justify-content: space-between;
-    
+#main {
+  display: flex;
+  justify-content: space-between;
 }
 
 #score-card {
-    background-color: blueviolet;
-    text-align: center;
-    width: 30%;   
-    display: flex;
-    border: 1px solid gray;
-    flex-direction: column;
-    
+  background-color: blueviolet;
+  text-align: center;
+  width: 30%;
+  display: flex;
+  border: 1px solid gray;
+  flex-direction: column;
 }
 
 #rules {
-    text-align: center;    
-    padding: 20px;
-    width: 30%;
-    background-color: blueviolet;    
-    display: flex;
-    justify-content: flex-start;
-    flex-direction: column;
-    border: 1px solid gray;
-         
-    
+  text-align: center;
+  padding: 20px;
+  width: 30%;
+  background-color: blueviolet;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  border: 1px solid gray;
 }
 
- .upper-section, .lower-section {
-    font-size: 25px;
-    display: flex;
-    justify-content: space-between;
-    border-bottom: 1px solid gray ;
-    padding: auto;
-    
+.upper-section,
+.lower-section {
+  font-size: 25px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid gray;
+  padding: auto;
 }
 
 #upper-dice-imgs {
-    max-width: 32px;
-    margin: 0;
-    padding: 0;
-    border: 1px solid red;
+  max-width: 32px;
+  margin: 0;
+  padding: 0;
+  border: 1px solid red;
 }
 
-
-.triples, .aces {
-    border-top: 1px solid gray;
+.triples,
+.aces {
+  border-top: 1px solid gray;
 }
 
-
-
-.score-box{
-    width: 20%;    
-    background-color: black;
-    display: flex;
-    justify-content: center;
-        
+.score-box {
+  width: 20%;
+  background-color: black;
+  display: flex;
+  justify-content: center;
 }
 
-
-#upper-total, #lower-total, #totals {
-    width: 20%;    
-    background-color: black;
-    display: flex;
-    justify-content: center;
-       
+#upper-total,
+#lower-total,
+#totals {
+  width: 20%;
+  background-color: black;
+  display: flex;
+  justify-content: center;
 }
 
-#basics, #app-instructions, #scoring {
-    text-align: left;
+#basics,
+#app-instructions,
+#scoring {
+  text-align: left;
 }
 
-#game-settings{
-    display: flex;   
-    font-size: 40px;
-    
-   justify-content: center;
-    
+#game-settings {
+  display: flex;
+  font-size: 40px;
+
+  justify-content: center;
 }
 
 #page-heading {
-    margin: 0;    
+  margin: 0;
 }
 
 #dice-imgs {
-    width: 30%;
-    display: flex;
-    flex-direction: column;
-    font-size: 30px;
-        
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  font-size: 30px;
 }
 
-#one, #two, #three, #four, #five {
-    display: flex; 
-    flex-direction: column; 
-    justify-content: center; 
-    text-align: center;   
-    margin:12.5px auto; 
-    max-width: 50px; 
-    max-height: 50px; 
-    border: 1px solid darkcyan;
-    border-radius: 20%;    
- }
-
-#bottom-buttons, #new-game {
-    display: flex;
-    justify-content: space-between;
-
+#one,
+#two,
+#three,
+#four,
+#five {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  margin: 12.5px auto;
+  max-width: 50px;
+  max-height: 50px;
+  border: 1px solid darkcyan;
+  border-radius: 20%;
 }
 
-
+#bottom-buttons,
+#new-game {
+  display: flex;
+  justify-content: space-between;
+}
 
 #total {
-    border-bottom: 0px;
+  border-bottom: 0px;
 }
 
-#new-game {    
-    text-align: center;
-    margin: 0 auto;    
+#new-game {
+  text-align: center;
+  margin: 0 auto;
 }
-
-
-
-
-
