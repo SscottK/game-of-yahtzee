@@ -18,8 +18,7 @@ let justScored = false;
 let bonusCount = 3;
 let bonusScore = 0;
 let chanceScore = 0;
-let diceFaceOne = new Image()
-diceFaceOne.src = './images/dice-ace.png'
+
 
 /*--let cached elements  -----*/
 
