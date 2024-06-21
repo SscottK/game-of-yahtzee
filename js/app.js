@@ -59,12 +59,6 @@ const init = () => {
     el.textContent = "";
     
   });
-  // diceImgEls.forEach((el) => {
-  //   el.classList.remove("keeping");
-  //   el.removeEventListener("click", diceToKeep);
-
-  //   changeDiceColor();
-  // });
   
   endTurn()
  
@@ -120,7 +114,7 @@ const rollDice = () => {
       }
       
       keptDice.splice(index, 1, roll);
-    }console.log(keptDice)
+    }
     index += 1;
   });
 

@@ -13,7 +13,7 @@ body {
   margin: 0;
   background-color: darkcyan;
   color: lightgray;
-  /* font-weight: bold; */
+  
 }
 
 #main {
@@ -48,13 +48,15 @@ body {
   justify-content: space-between;
   border-bottom: 1px solid gray;
   padding: auto;
+  
+}
+
+#descripton {    
+    margin-left: 5px;
 }
 
 #upper-dice-imgs {
-  max-width: 32px;
-  margin: 0;
-  padding: 0;
-  border: 1px solid red;
+  max-width: 15px;
 }
 
 .triples,

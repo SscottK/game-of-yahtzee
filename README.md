@@ -34,6 +34,7 @@ I enjoyed playing Yahtzee as a kid and thought it would be fun to make as a brow
 - HTML
 - CSS
 - JS
+- Aseprite
 
 ## Attributions
 
@@ -50,15 +51,15 @@ https://transfonter.org/
 Found the converter info here:
 https://stackoverflow.com/questions/24990554/how-to-include-a-font-ttf-using-css
 
-Custom made Dice face images by me using Aseprite (I used the steamed version):
+Custom made Dice face images by me using Aseprite (I used the steam version):
 https://aseprite.org/
 
 ## Future plans
 
 - Add multiplayer
-- Add Pixle Art style theme
-- Add animations and custom dice images
-- ✔ Add custom fonts to match styling (added 6/16/2024)
+- ✔ Add Pixle Art style theme (started 6/20/2024)
+- Add animations and ✔ custom dice images (added 6/20/2024) 
+- ✔ Add custom fonts to match styling (changed 6/20/2024)
     
 
 
