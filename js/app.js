@@ -62,6 +62,9 @@ const init = () => {
   scoreBoxEls.forEach((el) => {
     el.textContent = "";
   });
+  diceImgEls.forEach((el) => {
+    el.style.backgroundColor = 'darkcyan'
+  })
   rollCountEl.textContent = `Rolls Remaining: ${rollCount}`
 };
 
