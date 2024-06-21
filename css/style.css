@@ -106,7 +106,8 @@ body {
 #two,
 #three,
 #four,
-#five {
+#five,
+#six {
   display: flex;
   flex-direction: column;
   justify-content: center;
