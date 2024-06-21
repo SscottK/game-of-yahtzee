@@ -56,14 +56,16 @@ const init = () => {
   turnOver = false;
   scoreBoxEls.forEach((el) => {
     el.textContent = "";
+    el.removeEventListener("click", scorePoints);
   });
-  diceImgEls.forEach((el) => {
-    el.classList.remove("keeping");
-    el.removeEventListener("click", diceToKeep);
+  // diceImgEls.forEach((el) => {
+  //   el.classList.remove("keeping");
+  //   el.removeEventListener("click", diceToKeep);
 
-    changeDiceColor();
-  });
-  changeDiceColor()
+  //   changeDiceColor();
+  // });
+  endTurn()
+ 
   rollCountEl.textContent = `Rolls Remaining: ${rollCount}`
 };
 
@@ -84,9 +86,7 @@ const rollDice = () => {
   diceImgEls.forEach((el) => {
 
     if (!el.className.match("keeping")) {
-      let roll = Math.floor(Math.random() * 6 + 1);
-      
-
+      let roll = Math.floor(Math.random() * 6 + 1);    
       switch (roll) {
         case 1:
         el.setAttribute('src', "./images/dice-ace.png");
