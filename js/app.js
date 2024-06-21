@@ -63,10 +63,13 @@ const init = () => {
     el.textContent = "";
   });
   diceImgEls.forEach((el) => {
-    el.style.backgroundColor = 'darkcyan'
+    el.style.backgroundColor = 'darkcyan';
+    el.setAttribute('class', 'shown-dice');
   })
   rollCountEl.textContent = `Rolls Remaining: ${rollCount}`
 };
+
+
 
 const rollDice = () => {
   
