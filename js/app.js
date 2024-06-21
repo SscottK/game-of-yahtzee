@@ -55,8 +55,9 @@ const init = () => {
   endTurnButton.disabled = true;
   turnOver = false;
   scoreBoxEls.forEach((el) => {
+    el.removeEventListener('click', scorePoints)
     el.textContent = "";
-    el.removeEventListener("click", scorePoints);
+    
   });
   // diceImgEls.forEach((el) => {
   //   el.classList.remove("keeping");
@@ -64,6 +65,7 @@ const init = () => {
 
   //   changeDiceColor();
   // });
+  
   endTurn()
  
   rollCountEl.textContent = `Rolls Remaining: ${rollCount}`
