@@ -17,12 +17,12 @@
             <h1 id="win-loss-message"></h1>
             <h1>Score Card</h1>
             <div>Upper</div>
-            <div class="upper-section aces" id="dice">Aces = 1<div class="score-box" id="aces-score"></div></div>        
-            <div class="upper-section" id="dice">Twos = 2<div class="score-box" id="twos-score"></div></div>
-            <div class="upper-section" id="dice">Threes = 3<div class="score-box" id="threes-score"></div></div>  
-            <div class="upper-section" id="dice">Fours = 4<div class="score-box" id="fours-score"></div></div>        
-            <div class="upper-section" id="dice">Fives = 5<div class="score-box" id="fives-score"></div></div>
-            <div class="upper-section" id="dice">Sixes = 6<div class="score-box" id="sixes-score"></div></div>
+            <div class="upper-section aces" id="dice"><div>Aces <img id="upper-dice-imgs" src="./images/dice-ace.png" alt="One dot on Dice"> = 1</div><div class="score-box" id="aces-score"></div></div>        
+            <div class="upper-section" id="dice"><div>Twos <img id="upper-dice-imgs"  src="./images/dice-two.png" alt="Two dots on a dice"> = 2</div><div class="score-box" id="twos-score"></div></div>
+            <div class="upper-section" id="dice"><div>Threes <img id="upper-dice-imgs"  src="./images/dice-three.png" alt="Three dots on a dice"> = 3</div><div class="score-box" id="threes-score"></div></div>  
+            <div class="upper-section" id="dice"><div>Fours <img id="upper-dice-imgs"  src="./images/dice-four.png" alt="Four dots on a dice"> = 4</div><div class="score-box" id="fours-score"></div></div>        
+            <div class="upper-section" id="dice"><div>Fives <img id="upper-dice-imgs"  src="./images/dice-five.png" alt="Five dots on a dice"> = 5</div><div class="score-box" id="fives-score"></div></div>
+            <div class="upper-section" id="dice"><div>Sixes <img id="upper-dice-imgs"  src="./images/dice-six.png" alt="Six dots on a dice"> = 6</div><div class="score-box" id="sixes-score"></div></div>
             <div class="upper-section" id="upper-scores">Upper Score<div class="score-box" id="upper-score"></div></div>
             <div class="upper-section" id="upper-bonus">Upper Bonus<div class="score-box" id="bonus"></div></div>
             <div class="upper-section" id="upper-totals">Upper Total<div class="score-box" id="upper-total"></div></div>
@@ -41,11 +41,11 @@
         </div>    
         <div id="dice-imgs">
             <button type="button" id="new-game">New Game</button>
-           <div class="shown-dice" id="dice-first">1</div>
-           <div class="shown-dice" id="dice-second">2</div>
-           <div class="shown-dice" id="dice-third">3</div>
-           <div class="shown-dice" id="dice-fourth">4</div>
-           <div class="shown-dice" id="dice-fifth">5</div>
+           <img class="shown-dice" id="one" src="./images/dice-ace.png" alt="One doton Dice">
+           <img class="shown-dice" id="two" src="./images/dice-two.png" alt="Two dots on a dice">
+           <img class="shown-dice" id="three" src="./images/dice-three.png" alt="Three dots on a dice">
+           <img class="shown-dice" id="four" src="./images/dice-four.png" alt="Four dots on a dice">
+           <img class="shown-dice" id="five" src="./images/dice-five.png" alt="Five dots on a dice">
            
            <div id="bottom-buttons">            
             <button type="button" id="roll-dice">Roll Dice</button><button type="button" id="end-turn">End Turn</button>

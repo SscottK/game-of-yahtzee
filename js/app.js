@@ -1,13 +1,5 @@
 /*----- constants -----*/
-const smallStraights = [
-  [1, 2, 3, 4],
-  [2, 3, 4, 5],
-  [3, 4, 5, 6],
-];
-const largeStraights = [
-  [1, 2, 3, 4, 5],
-  [2, 3, 4, 5, 6],
-];
+
 
 /*----- state variables -----*/
 let upperTotal = 0;
@@ -26,6 +18,8 @@ let justScored = false;
 let bonusCount = 3;
 let bonusScore = 0;
 let chanceScore = 0;
+let diceFaceOne = new Image(64, 64)
+diceFaceOne.src = './images/dice-ace.png'
 
 /*--let cached elements  -----*/
 
@@ -66,13 +60,6 @@ const init = () => {
   rollDiceButton.disabled = false;
   endTurnButton.disabled = true;
   turnOver = false;
-  diceImgEls.forEach((el) => {
-    el.textContent = initalNum;
-    initalNum += 1;
-    el.classList.remove("keeping");
-    if (el.style.backgroundColor === "red")
-      el.style.backgroundColor = "darkcyan";
-  });
   scoreBoxEls.forEach((el) => {
     el.textContent = "";
   });
@@ -80,6 +67,7 @@ const init = () => {
 };
 
 const rollDice = () => {
+  
   let index = 0;
   justScored = false;
   scoreBoxEls.forEach((el) => {
@@ -91,15 +79,43 @@ const rollDice = () => {
     }
   });
   diceImgEls.forEach((el) => {
-    if (!el.className.match("keeping")) {
-      el.addEventListener("click", diceToKeep);
-    }
 
     if (!el.className.match("keeping")) {
       let roll = Math.floor(Math.random() * 6 + 1);
-      el.textContent = roll;
+      
+
+      switch (roll) {
+        case 1:
+        el.setAttribute('src', "./images/dice-ace.png");
+        el.setAttribute('id', "one");
+        break;
+        case 2:
+          el.setAttribute('src', "./images/dice-two.png");
+          el.setAttribute('id', "two");
+        break;
+        case 3:
+          el.setAttribute('src', "./images/dice-three.png");
+          el.setAttribute('id', "three");
+        break;
+        case 4:
+          el.setAttribute('src', "./images/dice-four.png");
+          el.setAttribute('id', "four");
+        break;
+        case 5:
+          el.setAttribute('src', "./images/dice-five.png");
+          el.setAttribute('id', "five");
+        break;
+        case 6:
+          el.setAttribute('src', "./images/dice-six.png")
+          el.setAttribute('id', "six");
+        break;
+      }
+      if (!el.className.match("keeping")) {
+        el.addEventListener("click", diceToKeep);
+      }
+      
       keptDice.splice(index, 1, roll);
-    }
+    }console.log(keptDice)
     index += 1;
   });
 
@@ -138,16 +154,40 @@ const removeKeeping = (event) => {
 };
 
 const diceToKeep = (event) => {
-  if (
-    event.target === diceImgOne ||
-    event.target === diceImgTwo ||
-    event.target === diceImgThree ||
-    event.target === diceImgFour ||
-    event.target === diceImgFive
-  ) {
-    event.target.classList.add("keeping");
+  
+  
+  let diceEl = event.target.id
+  switch (diceEl) {
+    case 'one':
+      event.target.classList.add('keeping');
+      event.target.addEventListener("click", removeKeeping);
+    break;
+    case 'two':
+      event.target.classList.add('keeping');
+      event.target.addEventListener("click", removeKeeping);
+    break;
+    case 'three':
+      event.target.classList.add('keeping');
+      event.target.addEventListener("click", removeKeeping);
+    break;
+    case 'four':
+      event.target.classList.add('keeping');
+      event.target.addEventListener("click", removeKeeping);
+    break;
+    case 'five':
+      event.target.classList.add('keeping');
+      event.target.addEventListener("click", removeKeeping);
+    break;
+    case 'six':
+      event.target.classList.add('keeping');
+      event.target.addEventListener("click", removeKeeping);
+    break;      
   }
-  event.target.addEventListener("click", removeKeeping);
+
+
+  
+  
+ 
 
   changeDiceColor();
 };
