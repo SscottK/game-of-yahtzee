@@ -110,7 +110,7 @@ body {
         
 }
 
-.shown-dice {
+#one, #two, #three, #four, #five {
     display: flex; 
     flex-direction: column; 
     justify-content: center; 
@@ -128,9 +128,7 @@ body {
 
 }
 
-.shown-dice {
 
-}
 
 #total {
     border-bottom: 0px;
